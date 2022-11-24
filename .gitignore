@@ -1,0 +1,6 @@
+.env
+__pycache__
+venv
+app.pyc
+db.pyc
+.pylintrc
