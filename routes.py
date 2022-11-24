@@ -18,3 +18,4 @@ def main():
     print(reference_id)
     reference.create_book_reference(reference_id,keyword, author, title, year, publisher)
     
+    return render_template("main.html")
