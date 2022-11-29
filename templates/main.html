@@ -18,6 +18,32 @@
         <p>Julkaisija:
         <input type="text" name="publisher" minlength="1" maxlength="70"></p>
 
+        <script>
+            function check(form) {
+                if (form.year.value.match(/^[0-9]+$/) == null) {
+                    alert("vuosiluku voi koostua vain numeroista");
+                    return false;
+                }
+                if (form.keyword.value.length < 1 || form.keyword.value.length > 20) {
+                    alert("avaimen pituus tulee olla 1-20 merkkiä");
+                    return false;
+                }
+                if (form.author.value.length < 1 || form.author.value.length > 50) {
+                    alert("kirjailijan nimen pituus tulee olla 1-50 merkkiä");
+                    return false;
+                }
+                if (form.publisher.value.length < 1 || form.publisher.value.length > 70) {
+                    alert("julkaisijan nimen pituus tulee olla 1-70 merkkiä");
+                    return false;
+                }
+                if (form.title.value.length < 1 || form.title.value.length > 70) {
+                    alert("otsikon pituus tulee olla 1-70 merkkiä");
+                    return false;
+                }
+                return true;
+            }
+        </script>
+
         <input type="submit" value="Lisää viite">
     </form>
     <p>Viitteesi:</p>

@@ -6,12 +6,16 @@ import reference
 def main():
     if request.method =="GET":
         return render_template("main.html")
-    keyword = request.form.get("keyword", "").strip()
-    author = request.form.get("author", "").strip()
-    title = request.form.get("title", "").strip()
-    year = request.form.get("year", "").strip()
-    publisher = request.form.get("publisher", "").strip()
-    reference_id = reference.create_reference('kirja')
-    reference.create_book_reference(reference_id,keyword, author, title, year, publisher)
-    flash("Reference added!")
+
+    if request.method == "POST":
+        keyword = request.form.get("keyword", "").strip()
+        author = request.form.get("author", "").strip()
+        title = request.form.get("title", "").strip()
+        year = request.form.get("year", "").strip()
+        publisher = request.form.get("publisher", "").strip()
+        reference_id = reference.create_reference('kirja')
+
+        if reference.create_book_reference(reference_id,keyword, author, title, year, publisher):
+            flash("Reference added!")
+        return render_template("error.html", message="kokeile toista avainsanaa")
     return render_template("main.html")
