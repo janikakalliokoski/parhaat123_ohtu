@@ -4,6 +4,12 @@
 </head>
 
 <body>
+    {% if message %}
+        {{ message }}
+    {% endif %}
+    {% if ermsg %}
+        {{ ermsg }}
+    {% endif %}
     <h4>Valitse viitteen tyyppi</h4>
     <form action="/" method="POST" onsubmit="return check(this)">
         <input type="radio" name="type" value="book" checked="checked"> Kirja
