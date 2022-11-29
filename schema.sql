@@ -9,6 +9,6 @@ create table book (
     keyword text unique,
     author text,
     title text,
-    year integer,
+    year text,
     publisher text
 );
