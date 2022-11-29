@@ -1,0 +1,7 @@
+# flyctl launch added from .gitignore
+**/.env
+**/__pycache__
+**/venv
+**/app.pyc
+**/db.pyc
+**/.pylintrc
