@@ -8,10 +8,12 @@ def create_reference(type):
 
 
 def create_book_reference(reference_id, keyword, author, title, year, publisher):
-    sql = "INSERT INTO book (book_id, keyword, author, title, year, publisher) VALUES (:book_id ,:keyword, :author, :title, :year, :publisher);"
+    sql = """INSERT INTO book
+             (book_id, keyword, author, title, year, publisher)
+             VALUES (:book_id ,:keyword, :author, :title, :year, :publisher);"""
     db.session.execute(sql,{
         "book_id": reference_id,
-        "keyword": keyword, 
+        "keyword": keyword,
         "author":author,
         "title":title,
         "year":year,
