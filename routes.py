@@ -18,6 +18,5 @@ def main():
         if reference.create_book_reference(reference_id,keyword, author, title, year, publisher):
             return render_template("main.html",
                                     message="Viite luotu onnistuneesti!")
-        else:
-            return render_template("main.html", ermsg="kokeile toista avainsanaa")
-    return render_template("main.html")
+        return render_template("main.html", ermsg="kokeile toista avainsanaa")
+    return None
