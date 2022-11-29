@@ -1,12 +1,11 @@
 *** Settings ***
 Library  SeleniumLibrary
-Library  ../../AppLibrary.py
 
 *** Variables ***
-${SERVER}  localhost:5000
-${BROWSER}  headlesschrome
+${SERVER}  http://parhaat123.fly.dev/
+${BROWSER}  chrome
 ${DELAY}  0 seconds
-${HOME URL}  http://${SERVER}
+${HOME URL}  ${SERVER}
 
 *** Keywords ***
 Go To Home Page
@@ -19,4 +18,3 @@ Open And Configure Browser
 
 Home Page Should Be Open
     Title Should Be  Viiteapuri
-localhost:5000

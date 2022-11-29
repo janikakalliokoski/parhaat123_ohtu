@@ -8,7 +8,7 @@ Test Setup  Go To Home Page
 Home Page Is Open
     Home Page Should Be Open
 
-Book with correct input added
+Book With Correct Input Added
     Set Input Field  title  parhaat123
     Set Input Field  author  mluukkai
     Set Input Field  keyword  123
@@ -20,7 +20,7 @@ Book with correct input added
 *** Keywords ***
 Set Input Field
     [Arguments]  ${field_id}  ${text}
-    Input Text  ${field_id} ${text}
+    Input Text  ${field_id}  ${text}
 
 Submit Form 
     Click Button  Lisää viite
