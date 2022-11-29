@@ -1,5 +1,5 @@
-from app import app
 from flask import render_template, request, redirect, flash
+from app import app
 import reference
 
 @app.route("/", methods=["GET", "POST"])
