@@ -17,5 +17,6 @@ def main():
 
         if reference.create_book_reference(reference_id,keyword, author, title, year, publisher):
             flash("Reference added!")
-        return render_template("error.html", message="kokeile toista avainsanaa")
+        else:
+            return render_template("error.html", message="kokeile toista avainsanaa")
     return render_template("main.html")
