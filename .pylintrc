@@ -1,0 +1,23 @@
+[MASTER]
+
+load-plugins=pylint.extensions.mccabe
+
+[MESSAGE CONTROL]
+
+disable=raw-checker-failed,
+        bad-inline-option,
+        locally-disabled,
+        file-ignored,
+        suppressed-message,
+        useless-suppression,
+        deprecated-pragma,
+        use-symbolic-message-instead,
+        missing-module-docstring,
+        missing-function-docstring,
+        missing-class-docstring,
+	wrong-import-position,
+	unused-import,
+	redefined-builtin,
+	no-member,
+	cyclic-import,
+	too-many-arguments
