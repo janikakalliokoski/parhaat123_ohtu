@@ -1,5 +1,5 @@
-from app import app
 from flask import render_template, request, redirect
+from app import app
 import reference
 
 @app.route("/", methods=["GET", "POST"])
@@ -17,5 +17,4 @@ def main():
     reference_id = reference.create_reference('kirja')
     print(reference_id)
     reference.create_book_reference(reference_id,keyword, author, title, year, publisher)
-    
     return render_template("main.html")
