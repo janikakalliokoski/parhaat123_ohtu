@@ -60,16 +60,24 @@
         <input type="submit" value="Lisää viite">
     </form>
 
-    <p>Viitteesi:    <input type="checkbox" name="BibTex">
-    <label for="BibTex">BibTex</label></p>
+    <p>Viitteesi:</p>
     <dl>
         {% for ref in refs %}
         <dt><b>Avain: {{ ref[0] }}</b></dt>
-        <dd>Airjailijan sukunimi: {{ ref[1] }}</dd>
+        <dd>Kirjailijan sukunimi: {{ ref[1] }}</dd>
         <dd>Kirjailijan etunimi: {{ ref[2] }}</dd>
         <dd>Otsikko: {{ ref[3] }}</dd>
         <dd>Julkaisuvuosi: {{ ref[4] }}</dd>
         <dd>Julkaisija: {{ ref[5] }}</dd>
+        <br><b>BibTeX</b>
+        <br>
+        <dt>@book&#123;{{ ref[0] }},</dt>
+        <dd>author = &#123;{{ ref[2] }}, {{ ref[1] }}&#125;,</dd>
+        <dd>title = &#123;{{ ref[3] }}&#125;,</dd>
+        <dd>year = &#123;{{ ref[4] }}&#125;,</dd>
+        <dd>publisher = &#123;{{ ref[5] }}&#125;,</dd>
+        &#125;
+        <br>
         <br>
         {% endfor %}
     </dl>
