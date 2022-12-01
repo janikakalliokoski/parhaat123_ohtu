@@ -28,7 +28,7 @@ jobs:
         run: pylint src/app.py src/reference.py src/routes.py
       - name: Install Robot
         run: pip install robotframework && pip install robotframework-seleniumlibrary
-      - name: Run robot tests
+      - name: Run robot src/tests
         run: robot tests
 
         
