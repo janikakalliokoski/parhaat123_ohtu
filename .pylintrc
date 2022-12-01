@@ -20,4 +20,5 @@ disable=raw-checker-failed,
 	redefined-builtin,
 	no-member,
 	cyclic-import,
-	too-many-arguments
+	too-many-arguments,
+        bare-except
