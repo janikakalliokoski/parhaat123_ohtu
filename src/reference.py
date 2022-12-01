@@ -7,18 +7,22 @@ def create_reference(type):
     return reference_id
 
 def create_book_reference(reference_id, keyword, author, title, year, publisher):
-    sql = """INSERT INTO book
-             (book_id, keyword, author, title, year, publisher)
-             VALUES (:book_id ,:keyword, :author, :title, :year, :publisher);"""
-    db.session.execute(sql,{
-        "book_id": reference_id,
-        "keyword": keyword,
-        "author":author,
-        "title":title,
-        "year":year,
-        "publisher":publisher
-        })
-    db.session.commit()
+    try:
+        sql = """INSERT INTO book
+                (book_id, keyword, author, title, year, publisher)
+                VALUES (:book_id ,:keyword, :author, :title, :year, :publisher);"""
+        db.session.execute(sql,{
+            "book_id": reference_id,
+            "keyword": keyword,
+            "author":author,
+            "title":title,
+            "year":year,
+            "publisher":publisher
+            })
+        db.session.commit()
+        return True
+    except:
+        return False
 
 def books_amount():
     sql = "SELECT COUNT(*) FROM books"
