@@ -25,7 +25,7 @@ jobs:
       - name: Install Lint
         run: pip install pylint
       - name: Run Lint
-        run: pylint app.py reference.py routes.py
+        run: pylint src/app.py src/reference.py src/routes.py
       - name: Install Robot
         run: pip install robotframework && pip install robotframework-seleniumlibrary
       - name: Run robot tests
