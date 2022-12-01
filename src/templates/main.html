@@ -16,8 +16,10 @@
 
         <p>Avain:
         <input type="text" name="keyword" minlength="1" maxlength="20"></p>
-        <p>Kirjailija:
-        <input type="text" name="author" minlength="1" maxlength="50"></p>
+        <p>Kirjailijan sukunimi:
+        <input type="text" name="author_surname" minlength="1" maxlength="50"></p>
+        <p>Kirjailijan etunimi:
+        <input type="text" name="author_name" minlength="1" maxlength="50"></p>
         <p>Otsikko:
         <input type="text" name="title" minlength="1" maxlength="70"></p>
         <p>Julkaisuvuosi:
@@ -35,8 +37,12 @@
                     alert("avaimen pituus tulee olla 1-20 merkkiä");
                     return false;
                 }
-                if (form.author.value.length < 1 || form.author.value.length > 50) {
-                    alert("kirjailijan nimen pituus tulee olla 1-50 merkkiä");
+                if (form.author_surname.value.length < 1 || form.author_surname.value.length > 50) {
+                    alert("kirjailijan sukunimen pituus tulee olla 1-50 merkkiä");
+                    return false;
+                }
+                if (form.author_name.value.length < 1 || form.author_name.value.length > 50) {
+                    alert("kirjailijan etunimen pituus tulee olla 1-50 merkkiä");
                     return false;
                 }
                 if (form.publisher.value.length < 1 || form.publisher.value.length > 70) {
@@ -53,8 +59,18 @@
 
         <input type="submit" value="Lisää viite">
     </form>
-    <p>Viitteesi:</p>
 
-    <input type="checkbox" name="BibTex">
-    <label for="BibTex">BibTex</label>
+    <p>Viitteesi:    <input type="checkbox" name="BibTex">
+    <label for="BibTex">BibTex</label></p>
+    <dl>
+        {% for ref in refs %}
+        <dt><b>Avain: {{ ref[0] }}</b></dt>
+        <dd>Airjailijan sukunimi: {{ ref[1] }}</dd>
+        <dd>Kirjailijan etunimi: {{ ref[2] }}</dd>
+        <dd>Otsikko: {{ ref[3] }}</dd>
+        <dd>Julkaisuvuosi: {{ ref[4] }}</dd>
+        <dd>Julkaisija: {{ ref[5] }}</dd>
+        <br>
+        {% endfor %}
+    </dl>
 </body>
