@@ -26,12 +26,6 @@ class Reference:
         except:
             return False
 
-    def books_amount():
-        sql = "SELECT COUNT(*) FROM book"
-        result = db.session.execute(sql)
-
-        return result.fetchone()
-
     def get_references_normal():
         sql = "select keyword, author_surname, author_name, title, year, publisher from book"
         result = db.session.execute(sql)
