@@ -25,12 +25,27 @@ class Reference:
             return True
         except:
             return False
+    
+    def books_size():
+        sql = "SELECT COUNT(*) FROM book"
+        result = db.session.execute(sql)
+
+        return result.fetchone()
+    
+    def get_books():
+        sql = "SELECT book_id, keyword, author_surname, author_name, title, year, publisher FROM book"
+        result = db.session.execute(sql)
+        result = result.fetchall()
+        return result
 
     def get_references_normal():
         sql = "select keyword, author_surname, author_name, title, year, publisher from book"
         result = db.session.execute(sql)
-
         return result.fetchall()
+    
+    def empty_books():
+        sql = "DELETE FROM books"
+        db.session.execute(sql)
 
     def get_references_bib():
         pass

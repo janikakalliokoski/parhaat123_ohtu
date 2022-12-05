@@ -1,12 +1,11 @@
-import imp
 from flask import render_template, request, redirect, flash
 from app import app
-from ref.ref import Reference as ref
+from ref.ref import Reference
 
 @app.route("/", methods=["GET", "POST"])
 def main():
     if request.method =="GET":
-        return render_template("main.html", refs=ref.get_references_normal())
+        return render_template("main.html", refs=Reference.get_references_normal())
 
     if request.method == "POST":
         keyword = request.form.get("keyword", "").strip()
@@ -15,11 +14,11 @@ def main():
         title = request.form.get("title", "").strip()
         year = request.form.get("year", "").strip()
         publisher = request.form.get("publisher", "").strip()
-        reference_id = ref.create_reference('kirja')
+        reference_id = Reference.create_reference('kirja')
 
-        if ref.create_book_reference(reference_id, keyword, author_surname, author_name, title, year, publisher):
+        if Reference.create_book_reference(reference_id, keyword, author_surname, author_name, title, year, publisher):
             return render_template("main.html",
-                                    message="Viite luotu onnistuneesti!", refs=ref.get_references_normal())
+                                    message="Viite luotu onnistuneesti!", refs=Reference.get_references_normal())
         return render_template("main.html",
                                 message="Viitteen luonti ei onnistunut, kokeile toista avainta")
     return None
