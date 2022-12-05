@@ -13,3 +13,17 @@ create table book (
     year text,
     publisher text
 );
+
+create table website (
+    id serial primary key,
+    website_id integer references reference,
+    keyword text unique,
+    added_at text,
+    author_surname text,
+    author_name text,
+    title text,
+    description text,
+    url text,
+    year text,
+    publisher text
+);
