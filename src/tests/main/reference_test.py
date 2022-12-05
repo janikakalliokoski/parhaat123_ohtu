@@ -27,6 +27,7 @@ class TestReference(unittest.TestCase):
         with app.app_context():
             random_keyword = get_random_string(8)
             self.assertEqual(ref.create_website_reference(5, random_keyword, "1234", "seppälä", "emilia", "nettisivu", "nettisivu", "nettisivu.net", "1234"), True)
+    
 
 def get_random_string(length):
     # choose from all lowercase letter

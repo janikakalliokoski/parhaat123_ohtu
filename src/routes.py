@@ -23,6 +23,9 @@ def main():
                                     message="Viite luotu onnistuneesti!", refs=ref.get_references_normal())
         return render_template("main.html",
                                 message="Viitteen luonti ei onnistunut, kokeile toista avainta")
+    
+    if request.method =="GET":
+        return render_template("main.html", refs=ref.get_references_normal())
         
     if request.method == "POST":
         keyword = request.form.get("keyword", "").strip()

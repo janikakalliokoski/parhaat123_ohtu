@@ -64,7 +64,4 @@ class Reference:
         result = db.session.execute(sql)
         result2 = db.session.execute(sql2)
 
-        return result.fetchall(), #result2.fetchall()
-
-    def get_references_bib():
-        pass
+        return result.fetchall(), result2.fetchall()
