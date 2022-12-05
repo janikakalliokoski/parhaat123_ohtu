@@ -28,9 +28,3 @@ jobs:
         run: pip install robotframework && pip install robotframework-seleniumlibrary
       - name: Run robot tests
         run: robot src/tests
-      - name: Install coverage
-        run: pip install coverage
-      - name: Create coverage report
-        run: coverage run --branch -m pytest src
-      - name: Coverage report to Codecov
-        run: bash <(curl -s https://codecov.io/bash)
