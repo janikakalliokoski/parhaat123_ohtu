@@ -24,8 +24,6 @@ jobs:
         run: pip install pylint
       - name: Run Lint
         run: pylint src/ref/ref.py src/routes.py src/app.py
-      - name: Coverage report
-        run: poetry run coverage xml
       - name: Coverage report to Codecov
         run: bash <(curl -s https://codecov.io/bash)
       - name: Install Robot
