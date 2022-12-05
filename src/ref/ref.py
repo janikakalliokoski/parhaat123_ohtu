@@ -62,9 +62,10 @@ class Reference:
 
     def get_references_normal():
         sql = "select keyword, author_surname, author_name, title, year, publisher from book"
+        sql2= """select keyword, added_at, author_surname,
+                author_name, title, description, url, year from website"""
+
         result = db.session.execute(sql)
+        result2 = db.session.execute(sql2)
 
-        return result.fetchall()
-
-    def get_references_bib():
-        pass
+        return result.fetchall(), result2.fetchall()
