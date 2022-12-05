@@ -20,12 +20,12 @@ jobs:
         run: pip install flask
       - name: Install dependencies
         run: pip install -r requirements.txt
+      - name: Coverage report to Codecov
+        run: bash <(curl -s https://codecov.io/bash)
       - name: Install Lint
         run: pip install pylint
       - name: Run Lint
         run: pylint src/ref/ref.py src/routes.py src/app.py
-      - name: Coverage report to Codecov
-        run: bash <(curl -s https://codecov.io/bash)
       - name: Install Robot
         run: pip install robotframework && pip install robotframework-seleniumlibrary
       - name: Run robot tests
