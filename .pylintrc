@@ -21,4 +21,8 @@ disable=raw-checker-failed,
 	no-member,
 	cyclic-import,
 	too-many-arguments,
-        bare-except
+        bare-except,
+	useless-import-alias,
+	no-self-argument,
+	no-method-argument
+	

@@ -1,11 +1,18 @@
 from flask import render_template, request, redirect, flash
 from app import app
-from ref.ref import Reference as ref #use this if flask
-
+<<<<<<< HEAD
+from ref.ref import Reference as ref
 
 @app.route("/", methods=["GET", "POST"])
 def main():
-    #from ref.ref import Reference as ref #use this if test
+    # from ref.ref import Reference as ref
+=======
+from ref.ref import Reference as ref
+
+@app.route("/", methods=["GET", "POST"])
+def main():
+    # from ref.ref import Reference as ref
+>>>>>>> efc7ec28b922a014716e229621a88d57d20ada00
     if request.method =="GET":
         return render_template("main.html", refs=ref.get_references_normal())
 
@@ -18,15 +25,17 @@ def main():
         publisher = request.form.get("publisher", "").strip()
         reference_id = ref.create_reference('kirja')
 
-        if ref.create_book_reference(reference_id, keyword, author_surname, author_name, title, year, publisher):
+        if ref.create_book_reference(
+            reference_id, keyword, author_surname, author_name, title, year, publisher):
             return render_template("main.html",
-                                    message="Viite luotu onnistuneesti!", refs=ref.get_references_normal())
+                                    message="Viite luotu onnistuneesti!",
+                                    refs=ref.get_references_normal())
         return render_template("main.html",
                                 message="Viitteen luonti ei onnistunut, kokeile toista avainta")
-    
+
     if request.method =="GET":
         return render_template("main.html", refs=ref.get_references_normal())
-        
+
     if request.method == "POST":
         keyword = request.form.get("keyword", "").strip()
         added_at = request.form.get("added_at", "").strip()
@@ -38,7 +47,10 @@ def main():
         year = request.form.get("year", "").strip()
         reference_id = ref.create_reference('verkkosivu')
 
-        if ref.create_website_reference(reference_id, keyword, added_at, author_surname, author_name, title, description, url, year):
+        if ref.create_website_reference(
+            reference_id, keyword, added_at, author_surname,
+            author_name, title, description, url, year):
             return render_template("main.html",
-                                    message="Viite luotu onnistuneesti!", refs=ref.get_references_normal())
+                                    message="Viite luotu onnistuneesti!",
+                                    refs=ref.get_references_normal())
     return None
