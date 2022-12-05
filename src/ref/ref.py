@@ -16,9 +16,30 @@ def create_book_reference(reference_id, keyword, author_surname, author_name, ti
             "keyword": keyword,
             "author_surname":author_surname,
             "author_name": author_name,
-            "title":title,
-            "year":year,
-            "publisher":publisher
+            "title": title,
+            "year": year,
+            "publisher": publisher
+            })
+        db.session.commit()
+        return True
+    except:
+        return False
+
+def create_website_reference(reference_id, keyword, added_at, author_surname, author_name, title, description, url, year):
+    try:
+        sql = """INSERT INTO website
+                (website_id, keyword, added_at, author_surname, author_name, title, description, url, year)
+                VALUES (:website_id ,:keyword, :added_at, :author_surname, :author_name, :title, :description, :url, :year);"""
+        db.session.execute(sql,{
+            "website_id": reference_id,
+            "keyword": keyword,
+            "added_at": added_at,
+            "author_surname": author_surname,
+            "author_name": author_name,
+            "title": title,
+            "description": description,
+            "url": url,
+            "year": year
             })
         db.session.commit()
         return True
@@ -32,7 +53,7 @@ def books_amount():
     return result.fetchone()
 
 def get_references_normal():
-    sql = "select keyword, author_surname, author_name, title, year, publisher from book"
+    sql = "select keyword, author_surname, author_name, title, year"
     result = db.session.execute(sql)
 
     return result.fetchall()

@@ -11,54 +11,132 @@
         {{ ermsg }}
     {% endif %}
     <h4>Valitse viitteen tyyppi</h4>
-    <form action="/" method="POST" onsubmit="return check(this)">
-        <input type="radio" name="type" value="book" checked="checked"> Kirja
 
-        <p>Avain:
-        <input type="text" name="keyword" minlength="1" maxlength="20"></p>
-        <p>Kirjailijan sukunimi:
-        <input type="text" name="author_surname" minlength="1" maxlength="50"></p>
-        <p>Kirjailijan etunimi:
-        <input type="text" name="author_name" minlength="1" maxlength="50"></p>
-        <p>Otsikko:
-        <input type="text" name="title" minlength="1" maxlength="70"></p>
-        <p>Julkaisuvuosi:
-        <input type="text" name="year" minlength="1" maxlength="4"></p>
-        <p>Julkaisija:
-        <input type="text" name="publisher" minlength="1" maxlength="70"></p>
+    <p> 
+        <select id="type" name="type" >
+            <option value="book"> Kirja </option>
+            <option value="website"> Verkkosivu </option>
+        </select>
+    </p>
+    
+    <div class="book">
+        <form action="/" method="POST" onsubmit="return check(this)">
+            
+            <p>Avain:
+            <input type="text" name="keyword" minlength="1" maxlength="20"></p>
+            <p>Kirjailijan sukunimi:
+            <input type="text" name="author_surname" minlength="1" maxlength="50"></p>
+            <p>Kirjailijan etunimi:
+            <input type="text" name="author_name" minlength="1" maxlength="50"></p>
+            <p>Otsikko:
+            <input type="text" name="title" minlength="1" maxlength="70"></p>
+            <p>Julkaisuvuosi:
+            <input type="text" name="year" minlength="1" maxlength="4"></p>
+            <p>Julkaisija:
+            <input type="text" name="publisher" minlength="1" maxlength="70"></p>
 
-        <script>
-            function check(form) {
-                if (form.year.value.match(/^[0-9]+$/) == null) {
-                    alert("vuosiluku voi koostua vain numeroista");
-                    return false;
+            <script>
+                function check(form) {
+                    if (form.year.value.match(/^[0-9]+$/) == null) {
+                        alert("vuosiluku voi koostua vain numeroista");
+                        return false;
+                    }
+                    if (form.keyword.value.length < 1 || form.keyword.value.length > 20) {
+                        alert("avaimen pituus tulee olla 1-20 merkkiä");
+                        return false;
+                    }
+                    if (form.author_surname.value.length < 1 || form.author_surname.value.length > 50) {
+                        alert("kirjailijan sukunimen pituus tulee olla 1-50 merkkiä");
+                        return false;
+                    }
+                    if (form.author_name.value.length < 1 || form.author_name.value.length > 50) {
+                        alert("kirjailijan etunimen pituus tulee olla 1-50 merkkiä");
+                        return false;
+                    }
+                    if (form.publisher.value.length < 1 || form.publisher.value.length > 70) {
+                        alert("julkaisijan nimen pituus tulee olla 1-70 merkkiä");
+                        return false;
+                    }
+                    if (form.title.value.length < 1 || form.title.value.length > 70) {
+                        alert("otsikon pituus tulee olla 1-70 merkkiä");
+                        return false;
+                    }
+                    return true;
                 }
-                if (form.keyword.value.length < 1 || form.keyword.value.length > 20) {
-                    alert("avaimen pituus tulee olla 1-20 merkkiä");
-                    return false;
-                }
-                if (form.author_surname.value.length < 1 || form.author_surname.value.length > 50) {
-                    alert("kirjailijan sukunimen pituus tulee olla 1-50 merkkiä");
-                    return false;
-                }
-                if (form.author_name.value.length < 1 || form.author_name.value.length > 50) {
-                    alert("kirjailijan etunimen pituus tulee olla 1-50 merkkiä");
-                    return false;
-                }
-                if (form.publisher.value.length < 1 || form.publisher.value.length > 70) {
-                    alert("julkaisijan nimen pituus tulee olla 1-70 merkkiä");
-                    return false;
-                }
-                if (form.title.value.length < 1 || form.title.value.length > 70) {
-                    alert("otsikon pituus tulee olla 1-70 merkkiä");
-                    return false;
-                }
-                return true;
-            }
-        </script>
+            </script>
 
-        <input type="submit" value="Lisää viite">
-    </form>
+            <input type="submit" value="Lisää viite">
+        </form>
+    </div>
+        
+    <div class="website">
+        <form action="/" method="POST" onsubmit="return check(this)">
+            
+            <p>Avain:
+            <input type="text" name="keyword" minlength="1" maxlength="20"></p>
+            <p>Haettu:
+                <input type="text" name="added_at" minlength="1" maxlength="70"></p>
+            <p>Kirjailijan sukunimi:
+            <input type="text" name="author_surname" minlength="1" maxlength="50"></p>
+            <p>Kirjailijan etunimi:
+            <input type="text" name="author_name" minlength="1" maxlength="50"></p>
+            <p>Otsikko:
+            <input type="text" name="title" minlength="1" maxlength="70"></p>
+            <p>Kuvaus:
+                <input type="text" name="description" minlength="1" maxlength="200"></p>
+            <p>url:
+            <input type="text" name="url" minlength="1" maxlength="200"></p>
+            <p>Julkaisuvuosi:
+                <input type="text" name="year" minlength="1" maxlength="4"></p>
+
+
+            <script>
+                function check(form) {
+                    if (form.year.value.match(/^[0-9]+$/) == null) {
+                        alert("vuosiluku voi koostua vain numeroista");
+                        return false;
+                    }
+                    if (form.keyword.value.length < 1 || form.keyword.value.length > 20) {
+                        alert("avaimen pituus tulee olla 1-20 merkkiä");
+                        return false;
+                    }
+                    if (form.author_surname.value.length < 1 || form.author_surname.value.length > 50) {
+                        alert("kirjailijan sukunimen pituus tulee olla 1-50 merkkiä");
+                        return false;
+                    }
+                    if (form.author_name.value.length < 1 || form.author_name.value.length > 50) {
+                        alert("kirjailijan etunimen pituus tulee olla 1-50 merkkiä");
+                        return false;
+                    }
+                    if (form.publisher.value.length < 1 || form.publisher.value.length > 70) {
+                        alert("julkaisijan nimen pituus tulee olla 1-70 merkkiä");
+                        return false;
+                    }
+                    if (form.title.value.length < 1 || form.title.value.length > 70) {
+                        alert("otsikon pituus tulee olla 1-70 merkkiä");
+                        return false;
+                    }
+                    if (form.added_at.value.length < 1 || form.added_at.value.length > 70) {
+                        alert("Hakupäivämäärän pituus tulee olla 1-70 merkkiä");
+                        return false;
+                    }
+                    if (form.description.value.length < 1 || form.description.value.length > 200) {
+                        alert("Kuvauksen pituus tulee olla 1-200 merkkiä");
+                        return false;
+                    }
+                    if (form.url.value.length < 1 || form.url.value.length > 200) {
+                        alert("Verkkosivuosoitteen pituus tulee olla 1-200 merkkiä");
+                        return false;
+                    }
+                    return true;
+                }
+            </script>
+
+            <input type="submit" value="Lisää viite">
+        </form>
+    </div>
+
+  
 
     <p>Viitteesi:</p>
     <dl>

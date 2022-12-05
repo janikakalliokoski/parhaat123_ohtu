@@ -14,11 +14,23 @@ def main():
         title = request.form.get("title", "").strip()
         year = request.form.get("year", "").strip()
         publisher = request.form.get("publisher", "").strip()
-        reference_id = ref.create_reference('kirja')
+        description = request.form.get("description", "").strip()
+        added_at = request.form.get("added_at", "").strip()
+        url = request.form.get("url", "").strip()
+        if publisher:
+            reference_id = ref.create_reference('kirja')
 
-        if ref.create_book_reference(reference_id, keyword, author_surname, author_name, title, year, publisher):
+            if ref.create_book_reference(reference_id, keyword, author_surname, author_name, title, year, publisher):
+                return render_template("main.html",
+                                        message="Viite luotu onnistuneesti!", refs=ref.get_references_normal())
             return render_template("main.html",
-                                    message="Viite luotu onnistuneesti!", refs=ref.get_references_normal())
-        return render_template("main.html",
-                                message="Viitteen luonti ei onnistunut, kokeile toista avainta")
+                                    message="Viitteen luonti ei onnistunut, kokeile toista avainta")
+        else:
+            reference_id = ref.create_reference('verkkosivu')
+
+            if ref.create_website_reference(reference_id, keyword, added_at, author_surname, author_name, title, description, url, year):
+                return render_template("main.html",
+                                        message="Viite luotu onnistuneesti!", refs=ref.get_references_normal())
+            return render_template("main.html",
+                                    message="Viitteen luonti ei onnistunut, kokeile toista avainta")
     return None
