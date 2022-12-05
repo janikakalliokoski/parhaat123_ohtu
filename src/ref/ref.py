@@ -1,10 +1,11 @@
 from db import db
 
-def create_reference(type):
-    sql = "INSERT INTO reference (type) VALUES (:type) returning id"
-    reference_id = db.session.execute(sql,{"type":type}).fetchone()[0]
-    db.session.commit()
-    return reference_id
+class Reference:
+    def create_reference(type):
+        sql = "INSERT INTO reference (type) VALUES (:type) returning id"
+        reference_id = db.session.execute(sql,{"type":type}).fetchone()[0]
+        db.session.commit()
+        return reference_id
 
 def create_book_reference(reference_id, keyword, author_surname, author_name, title, year, publisher):
     try:
@@ -16,15 +17,15 @@ def create_book_reference(reference_id, keyword, author_surname, author_name, ti
             "keyword": keyword,
             "author_surname":author_surname,
             "author_name": author_name,
-            "title": title,
-            "year": year,
-            "publisher": publisher
+            "title":title,
+            "year":year,
+            "publisher":publisher
             })
         db.session.commit()
         return True
     except:
         return False
-
+        
 def create_website_reference(reference_id, keyword, added_at, author_surname, author_name, title, description, url, year):
     try:
         sql = """INSERT INTO website
@@ -53,7 +54,7 @@ def books_amount():
     return result.fetchone()
 
 def get_references_normal():
-    sql = "select keyword, author_surname, author_name, title, year"
+    sql = "select keyword, author_surname, author_name, title, year, publisher from book"
     result = db.session.execute(sql)
 
     return result.fetchall()
