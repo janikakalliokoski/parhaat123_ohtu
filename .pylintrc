@@ -24,5 +24,6 @@ disable=raw-checker-failed,
         bare-except,
 	useless-import-alias,
 	no-self-argument,
-	no-method-argument
-	
+	no-method-argument,
+        consider-using-from-import
+
