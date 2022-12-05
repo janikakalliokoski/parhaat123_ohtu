@@ -12,16 +12,14 @@
     {% endif %}
     <h4>Valitse viitteen tyyppi</h4>
 
-    <p> 
-        <select id="type" name="type" >
-            <option value="book"> Kirja </option>
-            <option value="website"> Verkkosivu </option>
-        </select>
+    <p>
+        <input type="radio" name="type" value="kirja" checked="checked"> Kirja
+        <input type="radio" name="type" value="verkkosivu"> Verkkosivu
     </p>
-    
+
     <div class="book">
         <form action="/" method="POST" onsubmit="return check(this)">
-            
+
             <p>Avain:
             <input type="text" name="keyword" minlength="1" maxlength="20"></p>
             <p>Kirjailijan sukunimi:
@@ -68,10 +66,10 @@
             <input type="submit" value="Lisää viite">
         </form>
     </div>
-        
+
     <div class="website">
         <form action="/" method="POST" onsubmit="return check(this)">
-            
+
             <p>Avain:
             <input type="text" name="keyword" minlength="1" maxlength="20"></p>
             <p>Haettu:
@@ -136,7 +134,7 @@
         </form>
     </div>
 
-  
+
 
     <p>Viitteesi:</p>
     <dl>

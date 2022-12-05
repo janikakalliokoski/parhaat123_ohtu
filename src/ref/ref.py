@@ -7,7 +7,8 @@ class Reference:
         db.session.commit()
         return reference_id
 
-    def create_book_reference(reference_id, keyword, author_surname, author_name, title, year, publisher):
+    def create_book_reference(reference_id, keyword,
+    author_surname, author_name, title, year, publisher):
         try:
             sql = """INSERT INTO book
                     (book_id, keyword, author_surname, author_name, title, year, publisher)
@@ -25,8 +26,9 @@ class Reference:
             return True
         except:
             return False
-            
-    def create_website_reference(reference_id, keyword, added_at, author_surname, author_name, title, description, url, year):
+
+    def create_website_reference(reference_id, keyword,
+    added_at, author_surname, author_name, title, description, url, year):
         try:
             sql = """INSERT INTO website
                     (website_id, keyword, added_at, author_surname, author_name, title, description, url, year)
@@ -46,13 +48,14 @@ class Reference:
             return True
         except:
             return False
-    
+
     def empty_books():
         sql = "DELETE FROM book"
         db.session.execute(sql)
-    
+
     def fetch_books():
-        sql = "SELECT book_id, keyword, author_surname, author_name, title, year, publisher FROM book"
+        sql = """SELECT book_id, keyword, author_surname,
+                author_name, title, year, publisher FROM book"""
         result = db.session.execute(sql)
         result = result.fetchall()
         return result
