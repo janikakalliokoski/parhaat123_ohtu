@@ -17,12 +17,9 @@ def main():
         publisher = request.form.get("publisher", "").strip()
         reference_id = ref.create_reference('kirja')
 
-        if ref.create_book_reference(reference_id, keyword, author_surname, 
-            author_name, title, year, publisher):
-    
+        if ref.create_book_reference(reference_id, keyword, author_surname, author_name, title, year, publisher):
             return render_template("main.html",
-                                    message="Viite luotu onnistuneesti!", 
-                                        refs=ref.get_references_normal())
+                                    message="Viite luotu onnistuneesti!", refs=ref.get_references_normal())
         return render_template("main.html",
                                 message="Viitteen luonti ei onnistunut, kokeile toista avainta")
     return None
