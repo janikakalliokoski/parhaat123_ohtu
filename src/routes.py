@@ -4,6 +4,7 @@ import reference.ref as ref
 
 @app.route("/", methods=["GET", "POST"])
 def main():
+    # from ref.ref import Reference as ref
     if request.method =="GET":
         return render_template("main.html", refs=ref.Reference.get_references_normal())
 

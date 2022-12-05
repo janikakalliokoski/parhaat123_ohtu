@@ -5,6 +5,8 @@
 
 [testaa sovellusta täällä](https://parhaat123.fly.dev/)
 
+![coverage sprint 2](https://github.com/janikakalliokoski/parhaat123_ohtu/tree/main/documentation/images/coveragevko1.png
+
 ## Definition of Done
 
 - Hyväksymiskriteerit määritelty user storyille
