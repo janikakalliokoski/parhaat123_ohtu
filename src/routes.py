@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, flash
 from app import app
-import ref.ref as ref
+from ref.ref import Reference as ref
 
 @app.route("/", methods=["GET", "POST"])
 def main():
