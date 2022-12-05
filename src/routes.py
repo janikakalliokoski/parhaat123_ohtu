@@ -1,11 +1,11 @@
 from flask import render_template, request, redirect, flash
 from app import app
-from ref.ref import Reference as ref #use this if flask
+#from ref.ref import Reference as ref #use this if flask
 
 
 @app.route("/", methods=["GET", "POST"])
 def main():
-    #from ref.ref import Reference as ref #use this if test
+    from ref.ref import Reference as ref #use this if test
     if request.method =="GET":
         return render_template("main.html", refs=ref.get_references_normal())
 
