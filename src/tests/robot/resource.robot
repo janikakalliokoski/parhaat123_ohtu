@@ -4,7 +4,7 @@ Library  String
 
 *** Variables ***
 ${SERVER}  http://parhaat123.fly.dev/
-${BROWSER}  chrome
+${BROWSER}  headlesschrome
 ${DELAY}  0.5 seconds
 ${HOME URL}  ${SERVER}
 
