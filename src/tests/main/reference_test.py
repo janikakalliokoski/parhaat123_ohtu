@@ -17,6 +17,12 @@ class TestReference(unittest.TestCase):
             ref.create_book_reference(34, "abcdefg", "kalliokoski", "janika", "metsässä", 2001, "otava")
             self.assertEqual(ref.create_book_reference(1, "abcdefg","seppälä", "emilia", "kuinka koodata", 1234, "otava"), False)
 
+    def test_empty_books_works(self):
+        with app.app_context():
+            ref.empty_books()
+            length = len(ref.fetch_books())
+            self.assertEqual(length, 0)
+
 def get_random_string(length):
     # choose from all lowercase letter
     letters = string.ascii_lowercase
