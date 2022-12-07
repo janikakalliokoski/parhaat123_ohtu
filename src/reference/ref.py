@@ -60,6 +60,6 @@ class Reference:
         return result.fetchall()
 
     def get_references_normal():
-        sql = "select keyword, author_surname, author_name, title, year, publisher from book"
+        sql = """SELECT keyword, author_surname, author_name, title, year, publisher from book"""
         result = db.session.execute(sql)
         return result.fetchall()
