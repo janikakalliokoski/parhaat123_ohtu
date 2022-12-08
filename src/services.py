@@ -12,7 +12,7 @@ class ReferenceService:
 
     def create_book_reference(self, values: dict) -> bool:
         reference_id = self.reference.create_reference('kirja')
-        self.reference.create_book_reference(reference_id, 
+        return self.reference.create_book_reference(reference_id, 
                 values["keyword"], 
                 values["author_surname"],
                 values["author_name"], 
@@ -20,7 +20,7 @@ class ReferenceService:
                 values["year"], 
                 values["publisher"]
                 )
-        print(self.reference.get_references_normal())
-        return True
+        
+    
 
 reference_service = ReferenceService(ref)
