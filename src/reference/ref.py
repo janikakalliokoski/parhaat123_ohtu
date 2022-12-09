@@ -1,13 +1,16 @@
 from db import db
 
-class Reference:
-    def create_reference(type):
+class ReferenceRepository:
+    def __init__(self):
+        pass
+
+    def create_reference(self, type):
         sql = "INSERT INTO reference (type) VALUES (:type) returning id"
         reference_id = db.session.execute(sql,{"type":type}).fetchone()[0]
         db.session.commit()
         return reference_id
 
-    def create_book_reference(reference_id, keyword,
+    def create_book_reference(self, reference_id, keyword,
                             author_surname, author_name, title, year, publisher):
         try:
             sql = """INSERT INTO book
@@ -27,7 +30,7 @@ class Reference:
         except:
             return False
 
-    def create_website_reference(reference_id, keyword,
+    def create_website_reference(self, reference_id, keyword,
         added_at, author_surname, author_name, title, description, url, year):
         try:
             sql = """INSERT INTO website
@@ -49,17 +52,19 @@ class Reference:
         except:
             return False
 
-    def empty_books():
+    def empty_books(self):
         sql = "DELETE FROM book"
         db.session.execute(sql)
 
-    def fetch_books():
+    def fetch_books(self):
         sql = """SELECT book_id, keyword, author_surname,
         author_name, title, year, publisher FROM book"""
         result = db.session.execute(sql)
         return result.fetchall()
 
-    def get_references_normal():
+    def get_references_normal(self):
         sql = """SELECT keyword, author_surname, author_name, title, year, publisher from book"""
         result = db.session.execute(sql)
         return result.fetchall()
+
+viiterepositorio = ReferenceRepository()

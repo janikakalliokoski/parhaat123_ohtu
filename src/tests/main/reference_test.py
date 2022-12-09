@@ -5,7 +5,32 @@ from app import app
 import random
 import string
 
+class FakeReferenceRepo:
+    def __init__(self):
+        self.references = []
+        self.books = []
+
+    def create_new_reference(self, ref_id, reference):
+        self.references.append((ref_id, reference))
+
+    def create_new_book_reference(self, reference_id, keyword,
+                            author_surname, author_name, title, year, publisher):
+        self.books.append((reference_id, keyword,
+                            author_surname, author_name, title, year, publisher))
+
+    def get_all_books(self):
+        return self.books
+
+    def get_all_references(self):
+        return self.references
+
+    def empty_books(self):
+        self.books = []
+
 class TestReference(unittest.TestCase):
+    # def setUp(self):
+    #     with app.app_context():
+    #         self.ref = Refe
 
     def test_reference_goes_into_database(self):
         with app.app_context():
