@@ -2,28 +2,19 @@
 Resource  resource.robot
 Suite Setup  Open And Configure Browser
 Suite Teardown  Close Browser
-Test Setup  Go To Home Page
+Test Setup  Go To AddRef Page
 
 *** Test Cases ***
-Home Page Is Open
+Add RefPage Is Open
+    Add RefPage Should Be Open
+
+Book With Correct Input Added
+    Add Book With Correct Input  
     Home Page Should Be Open
-
-Added Books Are Shown In Human Readable Format
-    Add Book With Correct Input
-    Page Should Contain  Kirjailijan sukunimi: mallikas
-    Page Should Contain  Kirjailijan etunimi: mikko
-    Page Should Contain  Otsikko: parhaat123
-    Page Should Contain  Julkaisuvuosi: 2020
-    Page Should Contain  Julkaisija: Otava
-
-Added Books Are Shown In Bibtex Format
-    Add Book With Correct Input
-    Page Should Contain  author = {mallikas, mikko}
-    Page Should Contain  title = {parhaat123}
-    Page Should Contain  year = {2020}
-    Page Should Contain  publisher = {Otava}
+    Page Should Contain  Viite luotu onnistuneesti!
 
 *** Keywords ***
+
 Set Input Field
     [Arguments]  ${field_id}  ${text}
     Input Text  ${field_id}  ${text}

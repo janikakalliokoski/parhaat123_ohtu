@@ -58,6 +58,22 @@ class Reference:
         author_name, title, year, publisher FROM book"""
         result = db.session.execute(sql)
         return result.fetchall()
+    
+    def fetch_websites():
+        sql = """SELECT website_id, keyword, author_surname,
+        author_name, title, year, url FROM website"""
+        result = db.session.execute(sql)
+        return result.fetchall()
+    
+    def remove_book(id):
+        sql = """DELETE FROM book WHERE book_id={id}"""
+        result = db.session.execute(sql)
+        return result.fetchall()
+
+    def remove_website(id):
+        sql = """DELETE FROM website WHERE website_id={id}"""
+        result = db.session.execute(sql)
+        return result.fetchall()
 
     def get_references_normal():
         sql = """SELECT keyword, author_surname, author_name, title, year, publisher from book"""
