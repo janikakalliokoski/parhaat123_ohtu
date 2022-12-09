@@ -31,8 +31,9 @@ def main():
 
 @app.route("/delete", methods=["POST"])
 def delete():
+    r = refer.ReferenceService()
     if request.method == "POST":
         keyword = request.form.get("keyword", "").strip()
-        service.remove_reference(keyword)
+        r.remove_reference(keyword)
         return redirect("/")
 
