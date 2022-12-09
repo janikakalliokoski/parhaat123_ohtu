@@ -6,10 +6,9 @@ import services.reference_service as refer
 @app.route("/", methods=["GET", "POST"])
 def main():
     # from ref.ref import Reference as ref
+    r = refer.ReferenceService()
     if request.method =="GET":
-        r = refer.ReferenceService()
         return render_template("main.html", refs=r.get_all_references())
-        print(refs)
 
     if request.method == "POST":
         r = refer.ReferenceService()
