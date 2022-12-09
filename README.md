@@ -3,9 +3,9 @@
 
 [Backlog](https://docs.google.com/spreadsheets/d/1YLOMhTuRtkmOm1YDEsVQyEnXYjibj6BcjNR0LghErWo/edit?usp=sharing)
 
-[testaa sovellusta täällä](https://parhaat123.fly.dev/)
+[Testaa sovellusta täällä](https://parhaat123.fly.dev/)
 
-![coverage sprint 2](https://github.com/janikakalliokoski/parhaat123_ohtu/tree/main/documentation/images/coveragevko1.png
+[Coverage sprint 2](https://github.com/janikakalliokoski/parhaat123_ohtu/tree/main/documentation/images/coveragevko1.png)
 
 ## Definition of Done
 

@@ -3,9 +3,9 @@ Library  SeleniumLibrary
 Library  String
 
 *** Variables ***
-${SERVER}  http://parhaat123.fly.dev/
+${SERVER}  https://parhaat123.fly.dev/
 ${BROWSER}  headlesschrome
-${DELAY}  0.5 seconds
+${DELAY}  0 seconds
 ${HOME URL}  ${SERVER}
 
 *** Keywords ***
@@ -19,3 +19,4 @@ Open And Configure Browser
 
 Home Page Should Be Open
     Title Should Be  Viiteapuri
+
