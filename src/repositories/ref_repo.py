@@ -78,7 +78,7 @@ class ReferenceRepository:
         db.session.commit()
 
     def remove_book_reference(self, id):
-        sql = """ DELETE from book WHERE id=:id;"""
+        sql = """ DELETE from book WHERE book_id=:id;"""
         db.session.execute(sql, {"id":id})
         db.session.commit()
 
