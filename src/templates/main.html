@@ -170,7 +170,12 @@
     <p>Viitteesi:</p>
     <dl>
         {% for ref in refs %}
-        <dt><b>Avain: {{ ref[0] }}</b></dt>
+        <dt><b>Avain: {{ ref[0] }}</b>
+        <form action="/delete" method="POST">
+            <input type="hidden" value="{{ref[0]}}" name="keyword" >
+            <input type="submit" value="Poista">
+        </form>
+        </dt>
         <dd>Kirjailijan sukunimi: {{ ref[1] }}</dd>
         <dd>Kirjailijan etunimi: {{ ref[2] }}</dd>
         <dd>Otsikko: {{ ref[3] }}</dd>
@@ -189,4 +194,9 @@
         {% endfor %}
     </dl>
     
+    <script>
+        document.getElementById("delete_button").onclick = function () {
+            return 
+        }
+    </script>
 </body>
