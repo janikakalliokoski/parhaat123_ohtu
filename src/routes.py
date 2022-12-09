@@ -7,23 +7,25 @@ import services.reference_service as refer
 def main():
     # from ref.ref import Reference as ref
     if request.method =="GET":
-        return render_template("main.html", refs=refer.ReferenceService.get_all_references())
+        r = refer.ReferenceService()
+        return render_template("main.html", refs=r.get_all_references())
         print(refs)
 
     if request.method == "POST":
+        r = refer.ReferenceService()
         keyword = request.form.get("keyword", "").strip()
         author_surname = request.form.get("author_surname", "").strip()
         author_name = request.form.get("author_name", "").strip()
         title = request.form.get("title", "").strip()
         year = request.form.get("year", "").strip()
         publisher = request.form.get("publisher", "").strip()
-        reference_id = refer.ReferenceService.create_reference('kirja')
+        reference_id = r.create_reference('kirja')
 
-        if refer.ReferenceService.create_book_reference(reference_id, keyword, author_surname,
+        if r.create_new_book_reference(reference_id, keyword, author_surname,
                                     author_name, title, year, publisher):
             return render_template("main.html",
                                     message="Viite luotu onnistuneesti!",
-                                    refs=refer.ReferenceService.get_all_references())
+                                    refs=r.get_all_references())
         return render_template("main.html",
                                 message="Viitteen luonti ei onnistunut, kokeile toista avainta")
 
