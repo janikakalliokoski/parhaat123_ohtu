@@ -10,7 +10,7 @@ class ReferenceRepository:
         db.session.commit()
         return reference_id
 
-    def create_book_reference(self, reference_id, keyword,
+    def create_new_book_reference(self, reference_id, keyword,
                             author_surname, author_name, title, year, publisher):
         try:
             sql = """INSERT INTO book

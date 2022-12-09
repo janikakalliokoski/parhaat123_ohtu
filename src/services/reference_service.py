@@ -1,7 +1,7 @@
-from reference.ref import viiterepositorio as default_viiterepo
+import repositories.ref_repo as refe
 
 class ReferenceService:
-    def __init__(self, viiterepo=default_viiterepo):
+    def __init__(self, viiterepo=refe.viiterepositorio):
         self.viitteet = viiterepo
 
     def get_all_references(self):
@@ -16,9 +16,9 @@ class ReferenceService:
     def create_reference(self, ref_type):
         return self.viitteet.create_reference(ref_type)
 
-    def create_book_reference(self, reference_id, keyword,
+    def create_new_book_reference(self, reference_id, keyword,
                             author_surname, author_name, title, year, publisher):
-        return self.viitteet.create_book_reference(reference_id, keyword,
+        return self.viitteet.create_new_book_reference(reference_id, keyword,
                             author_surname, author_name, title, year, publisher)
 
-service = ReferenceService()
+
