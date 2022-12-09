@@ -13,11 +13,40 @@
     <h4>Valitse viitteen tyyppi</h4>
 
     <p>
-        <input type="radio" name="type" value="kirja" checked="checked"> Kirja
-        <input type="radio" name="type" value="verkkosivu"> Verkkosivu
+        <input type="radio" name="type" value="kirja" id="kirja" checked="checked"> Kirja
+        <input type="radio" name="type" value="verkkosivu" id="verkkosivu"> Verkkosivu
+    </p>
+    <p>
+        <button id="btn">Luo viite</button>
     </p>
 
-    <div class="book">
+    <div id="output"></div>
+
+    <script>
+        const btn = document.querySelector('#btn');        
+        const radioButtons = document.querySelectorAll('input[name="type"]');
+        const string = 
+        btn.addEventListener("click", () => {
+            let selectedType;
+            for (const radioButton of radioButtons) {
+                if (radioButton.checked) {
+                    selectedType = radioButton.value;
+                    break;
+                }
+            }
+            if(selectedType === "kirja"){
+                document.getElementById("website_div").style.display='none'
+                document.getElementById("book_div").style.display='block'
+            }
+            else {
+                document.getElementById("book_div").style.display='none'
+                document.getElementById("website_div").style.display='block'
+
+            }
+        });
+    </script>
+
+    <div id="book_div" style="display:none">
         <form action="/" method="POST" onsubmit="return check(this)">
 
             <p>Avain:
@@ -67,7 +96,9 @@
         </form>
     </div>
 
-    <div class="website">
+    
+
+    <div id="website_div" style="display:none" >
         <form action="/" method="POST" onsubmit="return check(this)">
 
             <p>Avain:
@@ -157,4 +188,5 @@
         <br>
         {% endfor %}
     </dl>
+    
 </body>
