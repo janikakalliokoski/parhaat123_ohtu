@@ -53,17 +53,43 @@ class ReferenceRepository:
             return False
 
     def empty_books(self):
-        sql = "DELETE FROM book"
+        sql = "DELETE FROM book;"
         db.session.execute(sql)
 
     def fetch_books(self):
         sql = """SELECT book_id, keyword, author_surname,
-        author_name, title, year, publisher FROM book"""
+        author_name, title, year, publisher FROM book;"""
         result = db.session.execute(sql)
         return result.fetchall()
+    
+    def get_book_by_keyword(self, keyword):
+        sql = """SELECT book_id FROM book WHERE keyword=:keyword;"""
+        result = db.session.execute(sql, {"keyword":keyword})
+        return result.fetchone()
+    
+    def get_website_by_keyword(self, keyword):
+        sql = """SELECT website_id FROM website WHERE keyword=:keyword;"""
+        result = db.session.execute(sql, {"keyword":keyword})
+        return result.fetchone()
+
+    
+    def remove_reference(self, id):
+        sql = """ DELETE from reference WHERE id=:id;"""
+        db.session.execute(sql, {"id":id})
+        db.session.commit()
+    
+    def remove_book_reference(self, id):
+        sql = """ DELETE from book WHERE id=:id;"""
+        db.session.execute(sql, {"id":id})
+        db.session.commit()
+    
+    def remove_website_reference(self, id):
+        sql = """ DELETE from website WHERE id=:id;"""
+        db.session.execute(sql, {"id":id})
+        db.session.commit()
 
     def get_references_normal(self):
-        sql = """SELECT keyword, author_surname, author_name, title, year, publisher from book"""
+        sql = """SELECT keyword, author_surname, author_name, title, year, publisher from book;"""
         result = db.session.execute(sql)
         return result.fetchall()
 
