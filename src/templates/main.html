@@ -1,9 +1,12 @@
+{% extends "layout.html" %}
 <head>
-    <title>Viiteapuri</title>
-    <h1>Viiteapuri</h1>
+    <title>Viiteapuri{% block title %}{% endblock %}</title>
+    <div class="header"></div>
+        <h1>Viiteapuri</h1>
+    </div>
 </head>
 
-<body>
+{% block content %}
     {% if message %}
         {{ message }}
     {% endif %}
@@ -199,4 +202,4 @@
             return 
         }
     </script>
-</body>
+{% endblock %}

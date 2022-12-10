@@ -1,0 +1,17 @@
+
+body {
+    background:aliceblue;
+    margin: auto;
+    max-width: 45em;
+    font-family: "Times New Roman", Times, serif;;
+    word-wrap: break-word;
+}
+
+.header {
+    background: cornflowerblue;
+    font-weight: bold;
+    padding: 2em 1em;
+    font-size: 2em;
+}
+
+
