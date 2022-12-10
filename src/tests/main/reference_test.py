@@ -1,9 +1,9 @@
 import unittest
+import random
+import string
 from services.reference_service import ReferenceService
 import db
 from app import app
-import random
-import string
 
 class FakeReferenceRepo:
     def __init__(self):
@@ -32,7 +32,8 @@ class TestReferenceService(unittest.TestCase):
         self.reference_service = ReferenceService(FakeReferenceRepo())
 
     def test_reference_goes_into_database(self):
-        self.reference_service.create_new_book_reference(38, "reference_service", "kalliokoski", "janika", "metsässä", 2001, "otava")
+        self.reference_service.create_new_book_reference(
+            38, "reference_service", "kalliokoski", "janika", "metsässä", 2001, "otava")
         self.assertEqual(len(self.reference_service.get_all_books()), 1)
 
 def get_random_string(length):

@@ -5,7 +5,7 @@ class ReferenceService:
         self.viitteet = viiterepo
 
     def get_all_references(self):
-        return self.viitteet.get_references_normal()
+        return self.viitteet.get_book_references_normal()
 
     def get_all_books(self):
         return self.viitteet.fetch_books()
@@ -34,5 +34,3 @@ class ReferenceService:
 
     def delete_website(self, website_id):
         pass
-
-
