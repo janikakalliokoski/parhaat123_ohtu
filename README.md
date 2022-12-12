@@ -16,3 +16,4 @@
 - Ajantasainen koodi Githubissa 
 - CI-palvelu käytössä
 - Koodia on helppo jatkokehittää
+

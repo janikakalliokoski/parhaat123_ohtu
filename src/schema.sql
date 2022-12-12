@@ -1,6 +1,7 @@
 create table reference (
     id serial primary key,
-    type text
+    type author
+#note: there isn´t a bibtex category text, you would propably change the schema?
 );
 
 create table book (
