@@ -23,7 +23,13 @@ jobs:
       - name: Install Lint
         run: pip install pylint
       - name: Run Lint
-        run: pylint src/reference/ref.py src/routes.py src/app.py
+        run: pylint src/repositories/ref_repo.py src/services/reference_service.py src/tests/main/reference_test.py src/app.py src/routes.py
+      - name: Install coverage
+        run: pip install coverage
+      - name: Create coverage report
+        run: coverage run --branch -m pytest src
+      - name: Coverage report to Codecov
+        run: bash <(curl -s https://codecov.io/bash)
       - name: Install Robot
         run: pip install robotframework && pip install robotframework-seleniumlibrary
       - name: Run robot tests

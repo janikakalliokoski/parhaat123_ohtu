@@ -72,22 +72,22 @@ class ReferenceRepository:
         result = db.session.execute(sql, {"keyword":keyword})
         return result.fetchone()
 
-    def remove_reference(self, id):
+    def remove_reference(self, reference_id):
         sql = """ DELETE from reference WHERE id=:id;"""
-        db.session.execute(sql, {"id":id})
+        db.session.execute(sql, {"id":reference_id})
         db.session.commit()
 
-    def remove_book_reference(self, id):
+    def remove_book_reference(self, book_id):
         sql = """ DELETE from book WHERE book_id=:id;"""
-        db.session.execute(sql, {"id":id})
+        db.session.execute(sql, {"id":book_id})
         db.session.commit()
 
-    def remove_website_reference(self, id):
-        sql = """ DELETE from website WHERE id=:id;"""
-        db.session.execute(sql, {"id":id})
+    def remove_website_reference(self, web_id):
+        sql = """ DELETE from website WHERE website_id=:id;"""
+        db.session.execute(sql, {"id":web_id})
         db.session.commit()
 
-    def get_references_normal(self):
+    def get_book_references_normal(self):
         sql = """SELECT keyword, author_surname, author_name, title, year, publisher from book;"""
         result = db.session.execute(sql)
         return result.fetchall()

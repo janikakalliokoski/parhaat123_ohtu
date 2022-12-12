@@ -7,6 +7,7 @@
 </head>
 
 {% block content %}
+<body>
     {% if message %}
         {{ message }}
     {% endif %}
@@ -27,9 +28,9 @@
     <div id="output"></div>
 
     <script>
-        const btn = document.querySelector('#btn');        
+        const btn = document.querySelector('#btn');
         const radioButtons = document.querySelectorAll('input[name="type"]');
-        const string = 
+        const string =
         btn.addEventListener("click", () => {
             let selectedType;
             for (const radioButton of radioButtons) {
@@ -100,7 +101,7 @@
         </form>
     </div>
 
-    
+
 
     <div id="website_div" style="display:none" >
         <form action="/" method="POST" onsubmit="return check(this)">
@@ -169,6 +170,7 @@
         </form>
     </div>
 
+<<<<<<< HEAD
     <h3>Viitteesi:</h3>
     <div class="top-class-name">
             {% for ref in refs %}
@@ -203,4 +205,42 @@
             }
         </script>
     </div>   
+=======
+
+
+    <p>Viitteesi:</p>
+    <dl>
+        {% for ref in refs %}
+        <dt><b>Avain: {{ ref[0] }}</b>
+        <form action="/delete" method="POST">
+            <input type="hidden" value="{{ref[0]}}" name="keyword" >
+            <input type="submit" value="Poista">
+        </form>
+        </dt>
+        <dd>Kirjailijan sukunimi: {{ ref[1] }}</dd>
+        <dd>Kirjailijan etunimi: {{ ref[2] }}</dd>
+        <dd>Otsikko: {{ ref[3] }}</dd>
+        <dd>Julkaisuvuosi: {{ ref[4] }}</dd>
+        <dd>Julkaisija: {{ ref[5] }}</dd>
+        <br><b>BibTeX</b>
+        <br>
+        <dt>@book&#123;{{ ref[0] }},</dt>
+        <dd>author = &#123;{{ ref[2] }}, {{ ref[1] }}&#125;,</dd>
+        <dd>title = &#123;{{ ref[3] }}&#125;,</dd>
+        <dd>year = &#123;{{ ref[4] }}&#125;,</dd>
+        <dd>publisher = &#123;{{ ref[5] }}&#125;,</dd>
+        &#125;
+        <br>
+        <br>
+        {% endfor %}
+    </dl>
+
+    <script>
+        document.getElementById("delete_button").onclick = function () {
+            return
+        }
+    </script>
+</body>
+
+>>>>>>> 1be1156592bf2e0953241d76cede38209540be5c
 {% endblock %}
