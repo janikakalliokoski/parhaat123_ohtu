@@ -1,0 +1,144 @@
+
+body {
+    background:aliceblue;
+    margin: auto;
+    max-width: 45em;
+    font-family: "Times New Roman", Times, serif;
+    word-wrap: break-word;
+}
+
+.header {
+    background-color: aliceblue;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    background: url(https://previews.123rf.com/images/saicle/saicle1901/saicle190100154/115734427-abstract-blue-tech-industrial-web-header-banner-vector-geometric-background-design-with-hud-gear-cir.jpg) center;
+  }
+
+h1 {
+    color: black;
+    text-align: center;
+  }
+
+h2 {
+    color: black;
+    font-size: 25px;
+    font-family: "Times New Roman", Times, serif;
+  }
+
+button {
+	box-shadow:inset 0px 1px 0px 0px #cccccc;
+	background:linear-gradient(to bottom, #a1d0ed 5%, #dcf2f5 100%);
+	background-color:#a1d0ed;
+	border-radius:6px;
+	border:1px solid #000000;
+	display:inline-block;
+	cursor:pointer;
+	color:#000000;
+	font-family: "Times New Roman", Times, serif;
+	font-size:15px;
+	font-weight:bolder;
+	padding:6px 24px;
+	text-decoration:none;
+    margin: auto;
+}
+
+button:hover {
+	background:linear-gradient(to bottom, #dcf2f5 5%, #a1d0ed 100%);
+	background-color:#dcf2f5;
+}
+
+button:active {
+	position:relative;
+	top:1px;
+}
+
+input[type=submit] {
+	box-shadow:inset 0px 1px 0px 0px #cccccc;
+	background:linear-gradient(to bottom, #a1d0ed 5%, #dcf2f5 100%);
+	background-color:#a1d0ed;
+	border-radius:6px;
+	border:1px solid #000000;
+	display:inline-block;
+	cursor:pointer;
+	color:#000000;
+	font-family: "Times New Roman", Times, serif;
+	font-size:15px;
+    font-weight: bolder;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+
+input[type=submit]:hover {
+	background:linear-gradient(to bottom, #dcf2f5 5%, #a1d0ed 100%);
+	background-color:#dcf2f5;
+}
+
+input[type=submit]:active {
+	position:relative;
+	top:1px;
+}
+
+input[value=Poista] {
+	box-shadow:inset 0px 1px 0px 0px #cccccc;
+	background:linear-gradient(to bottom, #a1d0ed 5%, #dcf2f5 100%);
+	background-color:#a1d0ed;
+	border-radius:6px;
+	border:1px solid #000000;
+	display:inline-block;
+	cursor:pointer;
+	color:#000000;
+	font-family: "Times New Roman", Times, serif;
+	font-size:15px;
+    font-weight: bolder;
+	padding:5px 20px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+
+input[value=Poista]:hover {
+	background:linear-gradient(to bottom, #dcf2f5 5%, #a1d0ed 100%);
+	background-color:#dcf2f5;
+}
+
+input[value=Poista]:active {
+	position:relative;
+	top:1px;
+}
+
+.top-class-name {
+    margin-left: 25px;
+    background-color: aliceblue;
+    padding: 0.5ex;
+    width: 50%;
+    }
+    
+.top-class-name > div {
+    margin-bottom: 1em;
+    }
+    
+.top-class-name dl {
+    margin: 0;
+    }
+    
+dl {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    }
+    
+.top-class-name dt{
+    display: inline-block;
+    vertical-align: top;
+    width: 220px;
+    }
+    
+.top-class-name dd {
+    vertical-align: top;
+    margin: 100;
+    }
