@@ -35,4 +35,6 @@ def delete():
     if request.method == "POST":
         keyword = request.form.get("keyword", "").strip()
         service.remove_reference(keyword)
-        return redirect("/")
+        return render_template("main.html",
+                                message="Viite poistettu onnistuneesti!",
+                                refs=service.get_all_references())
