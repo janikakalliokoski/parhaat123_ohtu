@@ -5,7 +5,7 @@ class ReferenceRepository:
     def __init__(self):
         pass
 
-    def create_reference(self, type):
+    def create_new_reference(self, type):
         sql = "INSERT INTO reference (type) VALUES (:type) returning id"
         reference_id = db.session.execute(sql,{"type":type}).fetchone()[0]
         db.session.commit()
@@ -97,6 +97,7 @@ class ReferenceRepository:
         result = db.session.execute(sql)
         return result.fetchall()
 
+<<<<<<< HEAD
     def get_book_by_tag(self, tag):
         sql = """SELECT book_id FROM book WHERE tag=:tag"""
         result =db.session.execute(sql, {"tag":tag})
@@ -107,13 +108,18 @@ class ReferenceRepository:
         result =db.session.execute(sql, {"tag":tag})
         return result.fetchall()
 
+=======
+>>>>>>> c081ab72885d2259724c48e49763f358bd73434b
     def get_website_references_normal(self):
-        sql = """SELECT keyword, added_at, author_surname, author_name, title, description, url, year, publisher from website;"""
+        sql = """SELECT keyword, added_at, author_surname, author_name,
+        title, description, url, year, publisher from website;"""
         result = db.session.execute(sql)
         return result.fetchall()
 
-    def get_website_references_normal(self):
-        pass
+    def get_all_references(self):
+        sql = """select * from reference;"""
+        result = db.session.execute(sql)
+        return result.fetchall()
 
     def fetch_websites(self):
         pass

@@ -52,6 +52,7 @@ def delete():
     if request.method == "POST":
         keyword = request.form.get("keyword", "").strip()
         service.remove_reference(keyword)
+<<<<<<< HEAD
         return redirect('/') 
 
 @app.route("/listTag", methods=["POST"])
@@ -64,3 +65,6 @@ def list_by_tag():
 
     return render_template("main.html", book_list=books_tags, misc_list=website_tags)
 
+=======
+        return redirect('/')
+>>>>>>> c081ab72885d2259724c48e49763f358bd73434b
