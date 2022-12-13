@@ -52,3 +52,11 @@ class ReferenceService:
         if website_id:
             self.viitteet.remove_website_reference(website_id[0])
             self.viitteet.remove_reference(website_id[0])
+
+    def create_website_reference(self, reference_id, keyword,
+        added_at, author_surname, author_name, title, description, url, year):
+        return self.viitteet.create_website_reference(reference_id, keyword,
+        added_at, author_surname, author_name, title, description, url, year)
+
+    def get_all_websites(self):
+        return self.viitteet.fetch_websites()

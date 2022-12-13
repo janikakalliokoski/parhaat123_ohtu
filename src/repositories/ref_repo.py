@@ -15,7 +15,8 @@ class ReferenceRepository:
         try:
             sql = """INSERT INTO book
                     (book_id, keyword, author_surname, author_name, title, year, publisher)
-                    VALUES (:book_id ,:keyword, :author_surname, :author_name, :title, :year, :publisher);"""
+                    VALUES (:book_id ,:keyword, :author_surname,
+                    :author_name, :title, :year, :publisher);"""
             db.session.execute(sql,{
                 "book_id": reference_id,
                 "keyword": keyword,
@@ -35,7 +36,8 @@ class ReferenceRepository:
         try:
             sql = """INSERT INTO website
             (website_id, keyword, added_at, author_surname, author_name, title, description, url, year)
-            VALUES (:website_id ,:keyword, :added_at, :author_surname, :author_name, :title, :description, :url, :year);"""
+            VALUES (:website_id ,:keyword, :added_at,
+            :author_surname, :author_name, :title, :description, :url, :year);"""
             db.session.execute(sql,{
             "website_id": reference_id,
             "keyword": keyword,
@@ -91,5 +93,14 @@ class ReferenceRepository:
         sql = """SELECT keyword, author_surname, author_name, title, year, publisher from book;"""
         result = db.session.execute(sql)
         return result.fetchall()
+
+    def get_website_references_normal(self):
+        pass
+
+    def fetch_websites(self):
+        pass
+
+    def remove_all_websites(self):
+        pass
 
 viiterepositorio = ReferenceRepository()

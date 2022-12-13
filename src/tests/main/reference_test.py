@@ -9,6 +9,7 @@ class FakeReferenceRepo:
     def __init__(self):
         self.references = []
         self.books = []
+        self.websites = []
 
     def create_new_reference(self, ref_id, reference):
         self.references.append((ref_id, reference))
@@ -26,6 +27,45 @@ class FakeReferenceRepo:
 
     def remove_all_books(self):
         self.books = []
+
+    def fetch_websites(self):
+        return self.websites
+
+    def remove_all_websites(self):
+        self.websites = []
+
+    def create_website_reference(self, reference_id, keyword,
+        added_at, author_surname, author_name, title, description, url, year):
+        self.websites.append((reference_id, keyword,
+        added_at, author_surname, author_name, title, description, url, year))
+
+    def get_book_by_keyword(self, keyword):
+        for book in self.books:
+            if book[0] == keyword:
+                return book
+
+    def get_website_by_keyword(self, keyword):
+        for website in self.websites:
+            if website[0] == keyword:
+                return website
+
+    def remove_reference(self, keyword):
+        for ref in self.references:
+            if ref[0] == keyword:
+                self.references.remove(ref)
+
+    def remove_book_reference(self, keyword):
+        for ref in self.books:
+            if ref[0] == keyword:
+                self.books.remove(ref)
+
+    def remove_website_reference(self, keyword):
+        for ref in self.websites:
+            if ref[0] == keyword:
+                self.websites.remove(ref)
+
+    def get_book_references_normal(self):
+        return self.books
 
 class TestReferenceService(unittest.TestCase):
     def setUp(self):
@@ -54,6 +94,29 @@ class TestReferenceService(unittest.TestCase):
             9, "abc", "kalliokoski", "janika", "metsässä", 2001, "otava")
         self.reference_service.remove_all_books()
         self.assertEqual(len(self.reference_service.get_all_books()),0)
+
+    def test_remove_book_reference_by_id(self):
+        self.reference_service.create_new_book_reference(
+            54, "5454", "home", "juusto", "lautasella", 2022, "otava")
+        self.reference_service.create_new_book_reference(
+            55, "5555", "leipä", "juusto", "lautasella", 2022, "otava")
+        self.reference_service.remove_reference(54)
+        self.assertEqual(len(self.reference_service.get_all_books()), 1)
+
+    def test_remove_website_reference_by_id(self):
+        self.reference_service.create_website_reference(
+            9999, "8888", "12122020", "kerma", "juusto",
+            "lautasella","tällane", "www.juustot.fi", "2022")
+        self.reference_service.create_website_reference(
+            9998, "8887", "12122020", "brie", "juusto",
+            "lautasella","tällane", "www.juustot.fi", "2022")
+        self.reference_service.remove_reference(9999)
+        self.assertEqual(len(self.reference_service.get_all_websites()), 1)
+
+    def test_gets_all_references(self):
+        self.reference_service.create_new_book_reference(
+            50, "5450", "sulate", "juusto", "lautasella", 2022, "otava")
+        self.assertEqual(len(self.reference_service.get_all_references()), 1)
 
 def get_random_string(length):
     letters = string.ascii_lowercase
