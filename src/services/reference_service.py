@@ -10,8 +10,11 @@ class ReferenceService:
     def remove_all_books(self):
         self.viitteet.remove_all_books()
 
-    def create_reference(self, ref_type):
-        return self.viitteet.create_reference(ref_type)
+    def create_new_reference(self, ref_type):
+        return self.viitteet.create_new_reference(ref_type)
+
+    def get_all_references(self):
+        return self.viitteet.get_all_references()
 
     def get_references(self):
         books = self.viitteet.get_book_references_normal()
@@ -47,7 +50,8 @@ class ReferenceService:
 
     def format_websites_bibtex(self,website):
         return f'@misc{{{website[0]}, title = \"{website[1]}\", author = \"{{{website[2]}\
-            + " " + {website[3]}}}\", howpublished = \"url{{{website[6]}}}\", year = {website[7]}"}}'
+            + " " + {website[3]}}}\", howpublished = \"url{{{website[6]}}}\",\
+                year = {website[7]}"}}'
 
     def check_if_all_str_book_columns_are_not_empty(self, keyword,
                         author_surname, author_name, title, publisher):

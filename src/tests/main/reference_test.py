@@ -11,13 +11,11 @@ class FakeReferenceRepo:
         self.books = []
         self.websites = []
 
-    def create_new_reference(self, ref_id, reference):
-        self.references.append((ref_id, reference))
-
     def create_new_book_reference(self, reference_id, keyword,
                             author_surname, author_name, title, year, publisher):
         self.books.append((reference_id, keyword,
                             author_surname, author_name, title, year, publisher))
+        self.references.append("kirja")
 
     def fetch_books(self):
         return self.books
@@ -38,6 +36,7 @@ class FakeReferenceRepo:
         added_at, author_surname, author_name, title, description, url, year):
         self.websites.append((reference_id, keyword,
         added_at, author_surname, author_name, title, description, url, year))
+        self.references.append("verkkosivu")
 
     def get_book_by_keyword(self, keyword):
         for book in self.books:

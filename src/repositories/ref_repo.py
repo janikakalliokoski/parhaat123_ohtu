@@ -4,7 +4,7 @@ class ReferenceRepository:
     def __init__(self):
         pass
 
-    def create_reference(self, type):
+    def create_new_reference(self, type):
         sql = "INSERT INTO reference (type) VALUES (:type) returning id"
         reference_id = db.session.execute(sql,{"type":type}).fetchone()[0]
         db.session.commit()
@@ -97,6 +97,11 @@ class ReferenceRepository:
     def get_website_references_normal(self):
         sql = """SELECT keyword, added_at, author_surname, author_name,
         title, description, url, year, publisher from website;"""
+        result = db.session.execute(sql)
+        return result.fetchall()
+
+    def get_all_references(self):
+        sql = """select * from reference;"""
         result = db.session.execute(sql)
         return result.fetchall()
 
