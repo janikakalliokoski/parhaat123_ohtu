@@ -30,7 +30,7 @@ class ReferenceRepository:
         except:
             return False
 
-    def create_website_reference(self, reference_id, keyword,
+    def create_new_website_reference(self, reference_id, keyword,
         added_at, author_surname, author_name, title, description, url, year):
         try:
             sql = """INSERT INTO website
@@ -91,5 +91,11 @@ class ReferenceRepository:
         sql = """SELECT keyword, author_surname, author_name, title, year, publisher from book;"""
         result = db.session.execute(sql)
         return result.fetchall()
+    
+    def get_website_references_normal(self):
+        sql = """SELECT keyword, added_at, author_surname, author_name, title, description, url, year, publisher from website;"""
+        result = db.session.execute(sql)
+        return result.fetchall()
+
 
 viiterepositorio = ReferenceRepository()

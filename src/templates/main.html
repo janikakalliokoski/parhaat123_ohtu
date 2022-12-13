@@ -172,28 +172,21 @@
 
     <h3>Viitteesi:</h3>
     <div class="top-class-name">
-            {% for ref in refs %}
-            <form action="/delete" method="POST">
-                <input type="hidden" value="{{ref[0]}}" name="keyword" >
-                <input type="submit" value="Poista">
-            </form>
-            <dt><b>Avain: {{ ref[0] }}</b></dt>
-            <dd>Kirjailijan sukunimi: {{ ref[1] }}</dd>
-            <dd>Kirjailijan etunimi: {{ ref[2] }}</dd>
-            <dd>Otsikko: {{ ref[3] }}</dd>
-            <dd>Julkaisuvuosi: {{ ref[4] }}</dd>
-            <dd>Julkaisija: {{ ref[5] }}</dd>
-            <br><b>BibTeX</b>
-            <br>
-            <dt>@book&#123;{{ ref[0] }},</dt>
-            <dd>author = &#123;{{ ref[2] }}, {{ ref[1] }}&#125;,</dd>
-            <dd>title = &#123;{{ ref[3] }}&#125;,</dd>
-            <dd>year = &#123;{{ ref[4] }}&#125;,</dd>
-            <dd>publisher = &#123;{{ ref[5] }}&#125;,</dd>
-            &#125;
-            <br>
-            <br>
+            <p><b>Viitteet</b></p>
+            {% for ref in refs_normal %}
+                <form action="/delete" method="POST">
+                    <input type="hidden" value="{{ref[1]}}" name="keyword" >
+                    <input type="submit" value="Poista">
+                </form>
+                {% for para in ref[0] %}
+                    <p> {{para}}</p>
+                {% endfor %}
             {% endfor %}
+            <p><b>Bibtex</b></p>
+            {% for bibtex in refs_bibtex %}
+                <p> {{bibtex}}</p>
+            {% endfor %}
+
         </dl>
 
         <script>
