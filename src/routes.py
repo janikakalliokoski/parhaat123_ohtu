@@ -8,7 +8,8 @@ def main():
     # from ref.ref import Reference as ref
     service = refer.ReferenceService()
     if request.method =="GET":
-        return render_template("main.html", refs=service.get_all_references())
+        refs_bibtex, refs_normal = service.get_references()
+        return render_template("main.html", refs_bibtex=refs_bibtex,refs_normal=refs_normal)
 
     if request.method == "POST":
         service = refer.ReferenceService()
@@ -18,13 +19,28 @@ def main():
         title = request.form.get("title", "").strip()
         year = request.form.get("year", "").strip()
         publisher = request.form.get("publisher", "").strip()
-        reference_id = service.create_reference('kirja')
-
-        if service.create_new_book_reference(reference_id, keyword, author_surname,
-                                    author_name, title, year, publisher):
-            return render_template("main.html",
-                                    message="Viite luotu onnistuneesti!",
-                                    refs=service.get_all_references())
+        description = request.form.get("description", "").strip()
+        added_at = request.form.get("added_at", "").strip()
+        url = request.form.get("url", "").strip()
+        if url:
+            reference_id = service.create_reference('verkkosivu')
+            if service.create_new_website_reference(reference_id,keyword,author_surname,
+                author_name, title, year, added_at, description, url):
+                refs_bibtex, refs_normal = service.get_references()
+                return render_template("main.html",
+                                        message="Viite luotu onnistuneesti!",
+                                        refs_bibtex=refs_bibtex,
+                                        refs_normal=refs_normal)
+        if publisher:
+            reference_id = service.create_reference('kirja')
+            if service.create_new_book_reference(reference_id, keyword, author_surname,
+                                        author_name, title, year, publisher):
+                refs_bibtex, refs_normal = service.get_references()
+                return render_template("main.html",
+                                        message="Viite luotu onnistuneesti!",
+                                        refs_bibtex=refs_bibtex,
+                                        refs_normal=refs_normal
+                                    )
         return render_template("main.html",
                                 message="Viitteen luonti ei onnistunut, kokeile toista avainta")
     return None
@@ -35,6 +51,4 @@ def delete():
     if request.method == "POST":
         keyword = request.form.get("keyword", "").strip()
         service.remove_reference(keyword)
-        return render_template("main.html",
-                                message="Viite poistettu onnistuneesti!",
-                                refs=service.get_all_references())
+        return redirect('/') 
