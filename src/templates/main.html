@@ -14,7 +14,8 @@
     {% if ermsg %}
         {{ ermsg }}
     {% endif %}
-    <h4>Valitse viitteen tyyppi</h4>
+    <a href="https://github.com/janikakalliokoski/parhaat123_ohtu">Linkki lähdekoodiin!</a> 
+    <h3>Valitse viitteen tyyppi</h3>
 
     <p>
         <input type="radio" name="type" value="kirja" id="kirja" checked="checked"> Kirja
@@ -169,40 +170,38 @@
         </form>
     </div>
 
-
-
-    <p>Viitteesi:</p>
-    <dl>
-        {% for ref in refs %}
-        <dt><b>Avain: {{ ref[0] }}</b>
-        <form action="/delete" method="POST">
-            <input type="hidden" value="{{ref[0]}}" name="keyword" >
-            <input type="submit" value="Poista">
-        </form>
-        </dt>
-        <dd>Kirjailijan sukunimi: {{ ref[1] }}</dd>
-        <dd>Kirjailijan etunimi: {{ ref[2] }}</dd>
-        <dd>Otsikko: {{ ref[3] }}</dd>
-        <dd>Julkaisuvuosi: {{ ref[4] }}</dd>
-        <dd>Julkaisija: {{ ref[5] }}</dd>
-        <br><b>BibTeX</b>
-        <br>
-        <dt>@book&#123;{{ ref[0] }},</dt>
-        <dd>author = &#123;{{ ref[2] }}, {{ ref[1] }}&#125;,</dd>
-        <dd>title = &#123;{{ ref[3] }}&#125;,</dd>
-        <dd>year = &#123;{{ ref[4] }}&#125;,</dd>
-        <dd>publisher = &#123;{{ ref[5] }}&#125;,</dd>
-        &#125;
-        <br>
-        <br>
-        {% endfor %}
-    </dl>
-
-    <script>
-        document.getElementById("delete_button").onclick = function () {
-            return
-        }
-    </script>
-</body>
-
+    <h3>Viitteesi:</h3>
+    <div class="top-class-name">
+            {% for ref in refs %}
+            <dt><b>Avain: {{ ref[0] }}</b>
+            <form action="/delete" method="POST">
+                <input type="hidden" value="{{ref[0]}}" name="keyword" >
+                <input type="submit" value="Poista">
+            <br>
+            </form>
+            </dt>
+            <dd>Kirjailijan sukunimi: {{ ref[1] }}</dd>
+            <dd>Kirjailijan etunimi: {{ ref[2] }}</dd>
+            <dd>Otsikko: {{ ref[3] }}</dd>
+            <dd>Julkaisuvuosi: {{ ref[4] }}</dd>
+            <dd>Julkaisija: {{ ref[5] }}</dd>
+            <br><b>BibTeX</b>
+            <br>
+            <dt>@book&#123;{{ ref[0] }},</dt>
+            <dd>author = &#123;{{ ref[2] }}, {{ ref[1] }}&#125;,</dd>
+            <dd>title = &#123;{{ ref[3] }}&#125;,</dd>
+            <dd>year = &#123;{{ ref[4] }}&#125;,</dd>
+            <dd>publisher = &#123;{{ ref[5] }}&#125;,</dd>
+            &#125;
+            <br>
+            <br>
+            {% endfor %}
+        </dl>
+        
+        <script>
+            document.getElementById("delete_button").onclick = function () {
+                return 
+            }
+        </script>
 {% endblock %}
+    </div>   
