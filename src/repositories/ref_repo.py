@@ -118,8 +118,11 @@ class ReferenceRepository:
         result = db.session.execute(sql)
         return result.fetchall()
 
+<<<<<<< HEAD
 >>>>>>> b69491206a749821af70e43965936a19ec7ecd3d
 
+=======
+>>>>>>> 9b754aaa2be77fcfdb15b3084a5322892afc5566
     def get_website_references_normal(self):
         pass
 

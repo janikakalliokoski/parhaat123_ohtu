@@ -27,13 +27,15 @@ class ReferenceService:
         books_bibtex = []
         websites_normal = []
         websites_bibtex = []
-        for book in books:
-            # tänne tulee books[0] et saadaan keyword poistoo varten helposti
-            books_normal.append((self.format_books_normal(book), book[0]))
-            books_bibtex.append(self.format_books_bibtex(book))
-        for website in websites:
-            websites_normal.append((self.format_websites_normal(website), website[0]))
-            websites_bibtex.append(self.format_websites_bibtex(website))
+        if books:
+            for book in books:
+                # tänne tulee books[0] et saadaan keyword poistoo varten helposti
+                books_normal.append((self.format_books_normal(book), book[0]))
+                books_bibtex.append(self.format_books_bibtex(book))
+        if websites:
+            for website in websites:
+                websites_normal.append((self.format_websites_normal(website), website[0]))
+                websites_bibtex.append(self.format_websites_bibtex(website))
         refs_bibtex = books_bibtex + websites_bibtex
         refs_normal = books_normal + websites_normal
         return refs_bibtex, refs_normal
