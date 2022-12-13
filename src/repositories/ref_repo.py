@@ -33,7 +33,7 @@ class ReferenceRepository:
         except:
             return False
 
-    def create_website_reference(self, reference_id, keyword,
+    def create_new_website_reference(self, reference_id, keyword,
         added_at, author_surname, author_name, title, description, url, year, tag):
         try:
             sql = """INSERT INTO website
@@ -93,27 +93,26 @@ class ReferenceRepository:
         db.session.commit()
 
     def get_book_references_normal(self):
-        sql = """SELECT keyword, author_surname, author_name, title, year, publisher from book;"""
+        sql = """SELECT keyword, author_surname, author_name, title, year, publisher, tag from book;"""
         result = db.session.execute(sql)
         return result.fetchall()
 
-<<<<<<< HEAD
-    def get_book_by_tag(self, tag):
-        sql = """SELECT book_id FROM book WHERE tag=:tag"""
-        result =db.session.execute(sql, {"tag":tag})
-        return result.fetchall()
-    
-    def get_website_by_tag(self, tag):
-        sql = """SELECT website_id FROM website WHERE tag=:tag"""
-        result =db.session.execute(sql, {"tag":tag})
+    def get_book_references_tag(self, tag):
+        sql = """SELECT keyword, author_surname, author_name, title, year,
+         publisher, tag from book WHERE tag=:tag;"""
+        result = db.session.execute(sql, {"tag":tag})
         return result.fetchall()
 
-=======
->>>>>>> c081ab72885d2259724c48e49763f358bd73434b
     def get_website_references_normal(self):
         sql = """SELECT keyword, added_at, author_surname, author_name,
-        title, description, url, year, publisher from website;"""
+        title, description, url, year, publisher, tag from website;"""
         result = db.session.execute(sql)
+        return result.fetchall()
+    
+    def get_website_references_tag(self, tag):
+        sql = """SELECT keyword, added_at, author_surname, author_name,
+        title, description, url, year, publisher, tag from website WHERE tag=:tag;"""
+        result = db.session.execute(sql, {"tag":tag})
         return result.fetchall()
 
     def get_all_references(self):
