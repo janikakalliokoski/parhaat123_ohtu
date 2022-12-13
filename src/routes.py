@@ -23,7 +23,7 @@ def main():
         added_at = request.form.get("added_at", "").strip()
         url = request.form.get("url", "").strip()
         if url:
-            reference_id = service.create_reference('verkkosivu')
+            reference_id = service.create_new_reference('verkkosivu')
             if service.create_new_website_reference(reference_id,keyword,author_surname,
                 author_name, title, year, added_at, description, url):
                 refs_bibtex, refs_normal = service.get_references()
