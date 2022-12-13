@@ -11,7 +11,8 @@ create table book (
     author_name text,
     title text,
     year text,
-    publisher text
+    publisher text,
+    tag text
 );
 
 create table website (
@@ -25,5 +26,6 @@ create table website (
     description text,
     url text,
     year text,
-    publisher text
+    publisher text,
+    tag text
 );

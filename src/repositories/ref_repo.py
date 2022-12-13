@@ -1,3 +1,4 @@
+from unittest import result
 from db import db
 
 class ReferenceRepository:
@@ -11,12 +12,12 @@ class ReferenceRepository:
         return reference_id
 
     def create_new_book_reference(self, reference_id, keyword,
-                            author_surname, author_name, title, year, publisher):
+                            author_surname, author_name, title, year, publisher, tag):
         try:
             sql = """INSERT INTO book
-                    (book_id, keyword, author_surname, author_name, title, year, publisher)
+                    (book_id, keyword, author_surname, author_name, title, year, publisher, tag)
                     VALUES (:book_id ,:keyword, :author_surname,
-                    :author_name, :title, :year, :publisher);"""
+                    :author_name, :title, :year, :publisher, :tag);"""
             db.session.execute(sql,{
                 "book_id": reference_id,
                 "keyword": keyword,
@@ -24,7 +25,8 @@ class ReferenceRepository:
                 "author_name": author_name,
                 "title":title,
                 "year":year,
-                "publisher":publisher
+                "publisher":publisher,
+                "tag":tag
                 })
             db.session.commit()
             return True
@@ -32,12 +34,12 @@ class ReferenceRepository:
             return False
 
     def create_new_website_reference(self, reference_id, keyword,
-        added_at, author_surname, author_name, title, description, url, year):
+        added_at, author_surname, author_name, title, description, url, year, tag):
         try:
             sql = """INSERT INTO website
-            (website_id, keyword, added_at, author_surname, author_name, title, description, url, year)
+            (website_id, keyword, added_at, author_surname, author_name, title, description, url, year, tag)
             VALUES (:website_id ,:keyword, :added_at,
-            :author_surname, :author_name, :title, :description, :url, :year);"""
+            :author_surname, :author_name, :title, :description, :url, :year, :tag);"""
             db.session.execute(sql,{
             "website_id": reference_id,
             "keyword": keyword,
@@ -47,7 +49,8 @@ class ReferenceRepository:
             "title": title,
             "description": description,
             "url": url,
-            "year": year
+            "year": year,
+            "tag": tag
             })
             db.session.commit()
             return True
@@ -90,14 +93,26 @@ class ReferenceRepository:
         db.session.commit()
 
     def get_book_references_normal(self):
-        sql = """SELECT keyword, author_surname, author_name, title, year, publisher from book;"""
+        sql = """SELECT keyword, author_surname, author_name, title, year, publisher, tag from book;"""
         result = db.session.execute(sql)
+        return result.fetchall()
+
+    def get_book_references_tag(self, tag):
+        sql = """SELECT keyword, author_surname, author_name, title, year,
+         publisher, tag from book WHERE tag=:tag;"""
+        result = db.session.execute(sql, {"tag":tag})
         return result.fetchall()
 
     def get_website_references_normal(self):
         sql = """SELECT keyword, added_at, author_surname, author_name,
-        title, description, url, year, publisher from website;"""
+        title, description, url, year, publisher, tag from website;"""
         result = db.session.execute(sql)
+        return result.fetchall()
+    
+    def get_website_references_tag(self, tag):
+        sql = """SELECT keyword, added_at, author_surname, author_name,
+        title, description, url, year, publisher, tag from website WHERE tag=:tag;"""
+        result = db.session.execute(sql, {"tag":tag})
         return result.fetchall()
 
     def get_all_references(self):

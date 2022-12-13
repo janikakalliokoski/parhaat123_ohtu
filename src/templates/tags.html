@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends 'layout.html' %}
 <head>
     <title>Viiteapuri{% block title %}{% endblock %}</title>
     <div class="header"></div>
@@ -15,10 +15,10 @@
         {{ ermsg }}
     {% endif %}
     <a href="https://github.com/janikakalliokoski/parhaat123_ohtu">Linkki lähdekoodiin!</a>
-
+    
     <form action="/listTag" method="POST">
         <input type="text" name="tag" placeholder="Etsi tagilla" minlength="1">
-        <input type="submit" value="Etsi" style="background-color: #B4CDE6;">
+        <input type="submit" value="Etsi" style="background-color: #B4CDE6;"> 
     </form>
 
     <h3>Valitse viitteen tyyppi</h3>
@@ -179,20 +179,20 @@
             <input type="submit" value="Lisää viite">
         </form>
     </div>
-
-    <div class="top-class-name">
-            <p><h3>Viitteet</h3></p>
-            {% for ref in refs_normal %}
+<button id="btn"><a href="/">Kaikki viitteet</a></button>
+<div class="top-class-name">
+    <p><h3>Viitteet tagilla</h3></p>
+    {% for tag in tagged_normal %}
                 <form action="/delete" method="POST">
-                    <input type="hidden" value="{{ref[1]}}" name="keyword" >
+                    <input type="hidden" value="{{tag[1]}}" name="keyword" >
                     <input type="submit" value="Poista">
                 </form>
-                {% for para in ref[0] %}
+                {% for para in tag[0] %}
                     <p> {{para}}</p>
                 {% endfor %}
             {% endfor %}
             <p><h3>Bibtex</h3></p>
-            {% for bibtex in refs_bibtex %}
+            {% for bibtex in tagged_bibtex %}
                 <p> {{bibtex}}</p>
             {% endfor %}
 
@@ -203,5 +203,5 @@
                 return
             }
         </script>
-{% endblock %}
-    </div>
+    {% endblock %}
+</div>
