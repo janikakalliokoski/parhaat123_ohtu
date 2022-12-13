@@ -52,7 +52,7 @@ class ReferenceRepository:
         except:
             return False
 
-    def empty_books(self):
+    def remove_all_books(self):
         sql = "DELETE FROM book;"
         db.session.execute(sql)
 
