@@ -99,7 +99,6 @@ class ReferenceRepository:
         result = db.session.execute(sql)
         return result.fetchall()
 
-
     def get_website_references_normal(self):
         pass
 
