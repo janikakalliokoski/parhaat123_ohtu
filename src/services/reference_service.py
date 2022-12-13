@@ -24,7 +24,8 @@ class ReferenceService:
         title = title.strip()
         publisher = publisher.strip()
 
-        if len(keyword) < 1 or len(author_surname) < 1 or len(author_name) < 1 or len(title) < 1 or len(publisher) < 1:
+        if len(keyword) < 1 or len(author_surname) < 1 or len(author_name) < 1\
+            or len(title) < 1 or len(publisher) < 1:
             return False
         return True
 

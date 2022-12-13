@@ -14,7 +14,7 @@
     {% if ermsg %}
         {{ ermsg }}
     {% endif %}
-    <a href="https://github.com/janikakalliokoski/parhaat123_ohtu">Linkki lähdekoodiin!</a> 
+    <a href="https://github.com/janikakalliokoski/parhaat123_ohtu">Linkki lähdekoodiin!</a>
     <h3>Valitse viitteen tyyppi</h3>
 
     <p>
@@ -173,13 +173,11 @@
     <h3>Viitteesi:</h3>
     <div class="top-class-name">
             {% for ref in refs %}
-            <dt><b>Avain: {{ ref[0] }}</b>
             <form action="/delete" method="POST">
                 <input type="hidden" value="{{ref[0]}}" name="keyword" >
                 <input type="submit" value="Poista">
-            <br>
             </form>
-            </dt>
+            <dt><b>Avain: {{ ref[0] }}</b></dt>
             <dd>Kirjailijan sukunimi: {{ ref[1] }}</dd>
             <dd>Kirjailijan etunimi: {{ ref[2] }}</dd>
             <dd>Otsikko: {{ ref[3] }}</dd>
@@ -197,11 +195,11 @@
             <br>
             {% endfor %}
         </dl>
-        
+
         <script>
             document.getElementById("delete_button").onclick = function () {
-                return 
+                return
             }
         </script>
 {% endblock %}
-    </div>   
+    </div>
