@@ -26,5 +26,6 @@ disable=raw-checker-failed,
 	no-self-argument,
 	no-method-argument,
         consider-using-from-import,
-        inconsistent-return-statements
-
+        inconsistent-return-statements,
+        no-self-use,
+        import-error
