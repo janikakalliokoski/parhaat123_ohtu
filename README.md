@@ -9,6 +9,8 @@
 
 [Coverage sprint 2](https://github.com/janikakalliokoski/parhaat123_ohtu/tree/main/documentation/images/coveragevko1.png)
 
+[Reportti projektista](https://docs.google.com/document/d/1hGl3rYyiMH0u4827HgAF09GR6Al_vQai3oqk_9FZIsI/edit)
+
 ## Definition of Done
 
 - Hyväksymiskriteerit määritelty user storyille
