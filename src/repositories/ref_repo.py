@@ -7,18 +7,18 @@ class ReferenceRepository:
 
     def create_new_reference(self, type):
         sql = "INSERT INTO reference (type) VALUES (:type) returning id"
-        reference_id = db.session.execute(sql,{"type":type}).fetchone()[0]
+        reference_id = db.session.execute(sql, {"type":type}).fetchone()[0]
         db.session.commit()
         return reference_id
 
     def create_new_book_reference(self, reference_id, keyword,
-                            author_surname, author_name, title, year, publisher, tag):
+                                  author_surname, author_name, title, year, publisher, tag):
         try:
             sql = """INSERT INTO book
                     (book_id, keyword, author_surname, author_name, title, year, publisher, tag)
                     VALUES (:book_id ,:keyword, :author_surname,
                     :author_name, :title, :year, :publisher, :tag);"""
-            db.session.execute(sql,{
+            db.session.execute(sql, {
                 "book_id": reference_id,
                 "keyword": keyword,
                 "author_surname":author_surname,
@@ -34,23 +34,24 @@ class ReferenceRepository:
             return False
 
     def create_new_website_reference(self, reference_id, keyword,
-        added_at, author_surname, author_name, title, description, url, year, tag):
+                                     added_at, author_surname, author_name,
+                                     title, description, url, year, tag):
         try:
             sql = """INSERT INTO website
             (website_id, keyword, added_at, author_surname, author_name, title, description, url, year, tag)
             VALUES (:website_id ,:keyword, :added_at,
             :author_surname, :author_name, :title, :description, :url, :year, :tag);"""
-            db.session.execute(sql,{
-            "website_id": reference_id,
-            "keyword": keyword,
-            "added_at": added_at,
-            "author_surname": author_surname,
-            "author_name": author_name,
-            "title": title,
-            "description": description,
-            "url": url,
-            "year": year,
-            "tag": tag
+            db.session.execute(sql, {
+                "website_id": reference_id,
+                "keyword": keyword,
+                "added_at": added_at,
+                "author_surname": author_surname,
+                "author_name": author_name,
+                "title": title,
+                "description": description,
+                "url": url,
+                "year": year,
+                "tag": tag
             })
             db.session.commit()
             return True

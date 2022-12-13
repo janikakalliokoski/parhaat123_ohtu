@@ -7,9 +7,9 @@ import services.reference_service as refer
 def main():
     # from ref.ref import Reference as ref
     service = refer.ReferenceService()
-    if request.method =="GET":
+    if request.method == "GET":
         refs_bibtex, refs_normal = service.get_references()
-        return render_template("main.html", refs_bibtex=refs_bibtex,refs_normal=refs_normal)
+        return render_template("main.html", refs_bibtex=refs_bibtex, refs_normal=refs_normal)
 
     if request.method == "POST":
         service = refer.ReferenceService()
@@ -26,25 +26,26 @@ def main():
 
         if url:
             reference_id = service.create_new_reference('verkkosivu')
-            if service.create_new_website_reference(reference_id,keyword,author_surname,
-                author_name, title, year, added_at, description, url, tag):
+            if service.create_new_website_reference(reference_id, keyword, author_surname,
+                                                    author_name, title, year, added_at,
+                                                    description, url, tag):
                 refs_bibtex, refs_normal = service.get_references()
                 return render_template("main.html",
-                                        message="Viite luotu onnistuneesti!",
-                                        refs_bibtex=refs_bibtex,
-                                        refs_normal=refs_normal)
+                                       message="Viite luotu onnistuneesti!",
+                                       refs_bibtex=refs_bibtex,
+                                       refs_normal=refs_normal)
         if publisher:
             reference_id = service.create_reference('kirja')
             if service.create_new_book_reference(reference_id, keyword, author_surname,
-                                        author_name, title, year, publisher, tag):
+                                                 author_name, title, year, publisher, tag):
                 refs_bibtex, refs_normal = service.get_references()
                 return render_template("main.html",
-                                        message="Viite luotu onnistuneesti!",
-                                        refs_bibtex=refs_bibtex,
-                                        refs_normal=refs_normal
-                                    )
+                                       message="Viite luotu onnistuneesti!",
+                                       refs_bibtex=refs_bibtex,
+                                       refs_normal=refs_normal)
+
         return render_template("main.html",
-                                message="Viitteen luonti ei onnistunut, kokeile toista avainta")
+                               message="Viitteen luonti ei onnistunut, kokeile toista avainta")
     return None
 
 @app.route("/delete", methods=["POST"])
@@ -65,8 +66,8 @@ def list_by_tag():
         websites_bib, websites_tag = service.get_tag_references_website(tag)
         tagged_bibtex = books_bib + websites_bib
         tagged_normal = books_tag + websites_tag
-        return render_template("tags.html", tagged_bibtex = tagged_bibtex,
-                                tagged_normal = tagged_normal)
+        return render_template("tags.html", tagged_bibtex=tagged_bibtex,
+                               tagged_normal=tagged_normal)
     except:
         return render_template("tags.html",
-                                message="Viitteitä ei löytynyt kyseisellä tagilla")
+                               message="Viitteitä ei löytynyt kyseisellä tagilla")
