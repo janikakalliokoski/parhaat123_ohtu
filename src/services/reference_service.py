@@ -78,9 +78,8 @@ class ReferenceService:
             {websites[6]}\nTagi: {websites[9]}".split('\n')
 
     def format_websites_bibtex(self,website):
-        return f'@misc{{{website[0]}, title = \"{website[1]}\", author = \"{{{website[2]}\
-            + " " + {website[3]}}}\", howpublished = \"url{{{website[6]}}}\",\
-                year = {website[7]}"}}'
+        return f'@misc{{{website[0]}, title = "{website[1]}", author = "{{{website[2] + " " + website[3]}}}", url = "{{{website[6]}}}",\
+                year = {website[7]}", description = {website[5]}}}'
 
     def check_if_all_str_book_columns_are_not_empty(self, keyword,
                         author_surname, author_name, title, publisher, tag):
