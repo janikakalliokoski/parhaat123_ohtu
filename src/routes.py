@@ -18,10 +18,11 @@ def main():
         title = request.form.get("title", "").strip()
         year = request.form.get("year", "").strip()
         publisher = request.form.get("publisher", "").strip()
+        tag = request.form.get("tag", "").strip()
         reference_id = service.create_reference('kirja')
 
         if service.create_new_book_reference(reference_id, keyword, author_surname,
-                                    author_name, title, year, publisher):
+                                    author_name, title, year, publisher, tag):
             return render_template("main.html",
                                     message="Viite luotu onnistuneesti!",
                                     refs=service.get_all_references())
@@ -38,3 +39,13 @@ def delete():
         return render_template("main.html",
                                 message="Viite poistettu onnistuneesti!",
                                 refs=service.get_all_references())
+
+@app.route("/listTag", methods=["POST"])
+def list_by_tag():
+    service = refer.ReferenceService()
+    tag = request.form["tag"]
+
+    books_tags = service.get_books_by_tags(tag)
+    website_tags = service.get_websites_by_tag(tag)
+
+    return render_template("tags.html", book_list=books_tags, misc_list=website_tags)
