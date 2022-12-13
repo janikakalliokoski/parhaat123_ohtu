@@ -53,7 +53,7 @@ def delete():
     if request.method == "POST":
         keyword = request.form.get("keyword", "").strip()
         service.remove_reference(keyword)
-        return redirect('/') 
+        return redirect('/')
 
 @app.route("/listTag", methods=["POST"])
 def list_by_tag():
@@ -65,8 +65,8 @@ def list_by_tag():
         websites_bib, websites_tag = service.get_tag_references_website(tag)
         tagged_bibtex = books_bib + websites_bib
         tagged_normal = books_tag + websites_tag
-        return render_template("tags.html", tagged_bibtex = tagged_bibtex, tagged_normal = tagged_normal)
+        return render_template("tags.html", tagged_bibtex = tagged_bibtex,
+                                tagged_normal = tagged_normal)
     except:
         return render_template("tags.html",
                                 message="Viitteitä ei löytynyt kyseisellä tagilla")
-

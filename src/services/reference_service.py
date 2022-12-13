@@ -12,10 +12,10 @@ class ReferenceService:
 
     def create_reference(self, ref_type):
         return self.viitteet.create_new_reference(ref_type)
-    
+
     def get_books_by_tags(self,tag):
         return self.viitteet.get_book_by_tag(tag)
-    
+
     def get_websites_by_tag(self,tag):
         return self.viitteet.get_website_by_tag(tag)
 
@@ -24,7 +24,7 @@ class ReferenceService:
 
     def get_all_references(self):
         return self.viitteet.get_all_references()
-    
+
     def get_tag_references_book(self, tag):
         books = self.viitteet.get_book_references_tag(tag)
         books_tag = []
@@ -33,7 +33,7 @@ class ReferenceService:
             books_tag.append((self.format_books_normal(book), book[0]))
             books_bib.append((self.format_books_bibtex(book)))
         return books_bib, books_tag
-    
+
     def get_tag_references_website(self,tag):
         websites = self.viitteet.get_website_references_tag(tag)
         websites_tag = []
@@ -65,7 +65,8 @@ class ReferenceService:
 
     def format_books_normal(self,books):
         return f"Avain: {books[0]}\nKirjailijan nimi: {books[1]}, {books[2]}\n\
-        Otsikko: {books[3]}\nJulkaisuvuosi: {books[4]}\nJulkaisija: {books[5]}\nTagi: {books[6]}".split('\n')
+        Otsikko: {books[3]}\nJulkaisuvuosi: {books[4]}\nJulkaisija:\
+            {books[5]}\nTagi: {books[6]}".split('\n')
 
     def format_books_bibtex(self,book):
         return f'@book{{{book[0]}, author = \"{book[2] + " " + book[1]}\", title = \"{book[3]}\", \
@@ -73,7 +74,8 @@ class ReferenceService:
 
     def format_websites_normal(self,websites):
         return f"Avain: {websites[0]}\nTekijä: {websites[2]}, {websites[3]}\n\
-        Otsikko: {websites[4]}\nJulkaisuvuosi: {websites[7]}\nUrl: {websites[6]}\nTagi: {websites[9]}".split('\n')
+        Otsikko: {websites[4]}\nJulkaisuvuosi: {websites[7]}\nUrl:\
+            {websites[6]}\nTagi: {websites[9]}".split('\n')
 
     def format_websites_bibtex(self,website):
         return f'@misc{{{website[0]}, title = \"{website[1]}\", author = \"{{{website[2]}\
@@ -109,7 +111,8 @@ class ReferenceService:
                                     author_surname, author_name, title, year, publisher, tag)
 
     def create_new_website_reference(self, reference_id, keyword,
-                            author_surname, author_name, title, year, added_at, description, url, tag):
+                            author_surname, author_name, title, year,
+                            added_at, description, url, tag):
         if not self.check_if_year_is_integer_and_not_empty(year):
             return self.viitteet.create_new_website_reference(reference_id, keyword,added_at,
                                     author_surname, author_name, title, description, url, year, tag)
@@ -127,7 +130,7 @@ class ReferenceService:
     def create_website_reference(self, reference_id, keyword,
         added_at, author_surname, author_name, title, description, url, year, tag):
         return self.viitteet.create_website_reference(reference_id, keyword,
-        added_at, author_surname, author_name, title, description, url, year)
+        added_at, author_surname, author_name, title, description, url, year, tag)
 
     def get_all_websites(self):
         return self.viitteet.fetch_websites()

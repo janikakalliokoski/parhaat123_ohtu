@@ -93,7 +93,8 @@ class ReferenceRepository:
         db.session.commit()
 
     def get_book_references_normal(self):
-        sql = """SELECT keyword, author_surname, author_name, title, year, publisher, tag from book;"""
+        sql = """SELECT keyword, author_surname, author_name, title,
+        year, publisher, tag from book;"""
         result = db.session.execute(sql)
         return result.fetchall()
 
@@ -108,7 +109,7 @@ class ReferenceRepository:
         title, description, url, year, publisher, tag from website;"""
         result = db.session.execute(sql)
         return result.fetchall()
-    
+
     def get_website_references_tag(self, tag):
         sql = """SELECT keyword, added_at, author_surname, author_name,
         title, description, url, year, publisher, tag from website WHERE tag=:tag;"""

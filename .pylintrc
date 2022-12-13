@@ -28,4 +28,6 @@ disable=raw-checker-failed,
         consider-using-from-import,
         inconsistent-return-statements,
         no-self-use,
-        import-error
+        import-error,
+        redefined-outer-name,
+        too-many-public-methods
