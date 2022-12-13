@@ -33,13 +33,8 @@ class ReferenceRepository:
         except:
             return False
 
-<<<<<<< HEAD
     def create_website_reference(self, reference_id, keyword,
         added_at, author_surname, author_name, title, description, url, year, tag):
-=======
-    def create_new_website_reference(self, reference_id, keyword,
-        added_at, author_surname, author_name, title, description, url, year):
->>>>>>> b69491206a749821af70e43965936a19ec7ecd3d
         try:
             sql = """INSERT INTO website
             (website_id, keyword, added_at, author_surname, author_name, title, description, url, year, tag)
@@ -101,8 +96,7 @@ class ReferenceRepository:
         sql = """SELECT keyword, author_surname, author_name, title, year, publisher from book;"""
         result = db.session.execute(sql)
         return result.fetchall()
-    
-<<<<<<< HEAD
+
     def get_book_by_tag(self, tag):
         sql = """SELECT book_id FROM book WHERE tag=:tag"""
         result =db.session.execute(sql, {"tag":tag})
@@ -112,17 +106,12 @@ class ReferenceRepository:
         sql = """SELECT website_id FROM website WHERE tag=:tag"""
         result =db.session.execute(sql, {"tag":tag})
         return result.fetchall()
-=======
+
     def get_website_references_normal(self):
         sql = """SELECT keyword, added_at, author_surname, author_name, title, description, url, year, publisher from website;"""
         result = db.session.execute(sql)
         return result.fetchall()
 
-<<<<<<< HEAD
->>>>>>> b69491206a749821af70e43965936a19ec7ecd3d
-
-=======
->>>>>>> 9b754aaa2be77fcfdb15b3084a5322892afc5566
     def get_website_references_normal(self):
         pass
 

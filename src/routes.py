@@ -19,16 +19,7 @@ def main():
         title = request.form.get("title", "").strip()
         year = request.form.get("year", "").strip()
         publisher = request.form.get("publisher", "").strip()
-<<<<<<< HEAD
         tag = request.form.get("tag", "").strip()
-        reference_id = service.create_reference('kirja')
-
-        if service.create_new_book_reference(reference_id, keyword, author_surname,
-                                    author_name, title, year, publisher, tag):
-            return render_template("main.html",
-                                    message="Viite luotu onnistuneesti!",
-                                    refs=service.get_all_references())
-=======
         description = request.form.get("description", "").strip()
         added_at = request.form.get("added_at", "").strip()
         url = request.form.get("url", "").strip()
@@ -44,14 +35,13 @@ def main():
         if publisher:
             reference_id = service.create_reference('kirja')
             if service.create_new_book_reference(reference_id, keyword, author_surname,
-                                        author_name, title, year, publisher):
+                                        author_name, title, year, publisher, tag):
                 refs_bibtex, refs_normal = service.get_references()
                 return render_template("main.html",
                                         message="Viite luotu onnistuneesti!",
                                         refs_bibtex=refs_bibtex,
                                         refs_normal=refs_normal
                                     )
->>>>>>> b69491206a749821af70e43965936a19ec7ecd3d
         return render_template("main.html",
                                 message="Viitteen luonti ei onnistunut, kokeile toista avainta")
     return None
@@ -62,10 +52,7 @@ def delete():
     if request.method == "POST":
         keyword = request.form.get("keyword", "").strip()
         service.remove_reference(keyword)
-<<<<<<< HEAD
-        return render_template("main.html",
-                                message="Viite poistettu onnistuneesti!",
-                                refs=service.get_all_references())
+        return redirect('/') 
 
 @app.route("/listTag", methods=["POST"])
 def list_by_tag():
@@ -75,7 +62,5 @@ def list_by_tag():
     books_tags = service.get_books_by_tags(tag)
     website_tags = service.get_websites_by_tag(tag)
 
-    return render_template("tags.html", book_list=books_tags, misc_list=website_tags)
-=======
-        return redirect('/') 
->>>>>>> b69491206a749821af70e43965936a19ec7ecd3d
+    return render_template("main.html", book_list=books_tags, misc_list=website_tags)
+

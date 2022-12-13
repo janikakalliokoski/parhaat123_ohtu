@@ -13,13 +13,12 @@ class ReferenceService:
     def create_reference(self, ref_type):
         return self.viitteet.create_reference(ref_type)
     
-<<<<<<< HEAD
     def get_books_by_tags(self,tag):
         return self.viitteet.get_book_by_tag(tag)
     
     def get_websites_by_tag(self,tag):
         return self.viitteet.get_website_by_tag(tag)
-=======
+
     def get_references(self):
         books = self.viitteet.get_book_references_normal()
         websites = self.viitteet.get_website_references_normal()
@@ -53,7 +52,6 @@ class ReferenceService:
 
     def format_websites_bibtex(self,website):        
         return f'@misc{{{website[0]}, title = \"{website[1]}\", author = \"{{{website[2]} + " " + {website[3]}}}\", howpublished = \"url{{{website[6]}}}\", year = {website[7]}"}}'
->>>>>>> b69491206a749821af70e43965936a19ec7ecd3d
 
     def check_if_all_str_book_columns_are_not_empty(self, keyword,
                         author_surname, author_name, title, publisher, tag):
