@@ -51,4 +51,4 @@ def delete():
     if request.method == "POST":
         keyword = request.form.get("keyword", "").strip()
         service.remove_reference(keyword)
-        return redirect('/') 
+        return redirect('/')
